@@ -2,8 +2,10 @@
 <span style="font-size: 24px;"></span>
 _____________________________
 
+<div align="justify">
 **Este repositorio contiene los códigos desarrollados durante mi trabajo de grado, enfocados en el estudio de propiedades aritméticas relacionadas con la teoría de Ehrhart.
 Se incluyen implementaciones de algoritmos, experimentos numéricos y análisis computacionales sobre poliedros enteros, funciones de conteo de puntos y polinomios de Ehrhart.**
+</div>
 
 <p align="center">
   <img src="https://nedbatchelder.com/pix/jenn-polytope.jpg" alt="Visualización de un poliedro relacionado con la teoría de Ehrhart" width="300">
@@ -32,13 +34,21 @@ _____________________________
 <span style="font-size: 24px;"></span>
 ____________________________________
 
+<p align="center">
+  <img src="https://images.zapnito.com/cdn-cgi/image/metadata=copyright,format=auto,quality=95,fit=scale-down/https://images.zapnito.com/users/717496/posters/e2e24f08-ec2c-4e55-ae2b-f2e86d55051e_large.png" alt="Nueva imagen relacionada" width="300">
+</p>
+
+
+<div align="justify">
 Todos los códigos de este repositorio han sido desarrollados en Google Colab para facilitar su ejecución y visualización.  
 Cada archivo está vinculado a este repositorio de GitHub, por lo que puedes abrir y correr los notebooks directamente en Colab sin necesidad de instalaciones locales.
+</div>
 
 **Para ejecutarlos:**
-- Haz clic en el enlace de cada notebook o súbelo a tu Google Drive.
-- Asegúrate de tener una cuenta de Google activa para usar Google Colab.
+
+- Haga clic en el enlace de cada notebook o súbelo a su Google Drive.
+- Asegúrese de tener una cuenta de Google activa para usar Google Colab.
 - No se requieren instalaciones adicionales: todas las dependencias necesarias están disponibles en el entorno de Colab.
 
-> **Nota:** Si prefieres, también puedes descargar los notebooks y ejecutarlos en tu entorno local compatible con Jupyter.
+> **Nota:** Si prefiere, también puedes descargar los notebooks y ejecutarlos en su entorno local compatible con Jupyter.
 
