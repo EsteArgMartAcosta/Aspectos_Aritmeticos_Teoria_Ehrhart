@@ -35,7 +35,7 @@ _____________________________
 ____________________________________
 
 <p align="center">
-  <img src="https://images.zapnito.com/cdn-cgi/image/metadata=copyright,format=auto,quality=95,fit=scale-down/https://images.zapnito.com/users/717496/posters/e2e24f08-ec2c-4e55-ae2b-f2e86d55051e_large.png" alt="Nueva imagen relacionada" width="300">
+  <img src="https://images.zapnito.com/cdn-cgi/image/metadata=copyright,format=auto,quality=95,fit=scale-down/https://images.zapnito.com/users/717496/posters/e2e24f08-ec2c-4e55-ae2b-f2e86d55051e_large.png" alt="Nueva imagen relacionada" width="200">
 </p>
 
 
