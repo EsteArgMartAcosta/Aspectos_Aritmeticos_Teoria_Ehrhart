@@ -52,5 +52,5 @@ Cada archivo está vinculado a este repositorio de GitHub, por lo que se puede a
 - Asegúrese de tener una cuenta de Google activa para usar Google Colab.
 - No se requieren instalaciones adicionales: todas las dependencias necesarias están disponibles en el entorno de Colab.
 
-> **Nota:** Si prefiere, también puedes descargar los notebooks y ejecutarlos en su entorno local compatible con Jupyter.
+> **Nota:** Si prefiere, también puede descargar los notebooks y ejecutarlos en su entorno local compatible con Jupyter.
 
