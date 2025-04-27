@@ -6,8 +6,9 @@ _____________________________
 Se incluyen implementaciones de algoritmos, experimentos numéricos y análisis computacionales sobre poliedros enteros, funciones de conteo de puntos y polinomios de Ehrhart.**
 
 <p align="center">
-  <img src="https://nedbatchelder.com/pix/jenn-polytope.jpg" alt="Visualización de un poliedro relacionado con la teoría de Ehrhart">
+  <img src="https://nedbatchelder.com/pix/jenn-polytope.jpg" alt="Visualización de un poliedro relacionado con la teoría de Ehrhart" width="300">
 </p>
+
 
 
 
