@@ -11,15 +11,16 @@ Se incluyen implementaciones de algoritmos, experimentos numéricos y análisis 
 
 
 
-
-
-# 🎖️ Objetivo del Juego 🎖️
+# 🎖️ Tabla de Contenido 🎖️
 <span style="font-size: 24px;"></span>
 _____________________________
-**El objetivo principal del juego es eliminar las reinas del oponente mientras proteges las tuyas. Las reinas pueden moverse en líneas rectas y disparar flechas en múltiples direcciones, creando un entorno de juego dinámico y táctico.**
 
-![image](https://github.com/EsteArgen/PROYECTO-T.E.A/assets/101402836/d53c141f-d235-45d4-8d9f-2f8dd2ea2b6b)
-
+1. [Introducción](#introducción)
+2. [Envolvente Convexa](#envolvente-convexa)
+3. [Triangulaciones](#triangulaciones-algoritmos)
+4. [Visualización de poliedros](#visualización-de-poliedros)
+5. [Experimentos aritméticos](#experimentos-aritméticos)
+6. [Utilidades](#utilidades)
 
 # 👮‍♂️ Reglas Principales 👮‍♀️
 <span style="font-size: 24px;"></span>
