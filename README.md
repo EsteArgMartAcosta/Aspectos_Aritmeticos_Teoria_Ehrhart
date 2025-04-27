@@ -44,6 +44,7 @@ Todos los códigos de este repositorio han sido desarrollados en Google Colab pa
 Cada archivo está vinculado a este repositorio de GitHub, por lo que se puede abrir y correr los notebooks directamente en Colab sin necesidad de instalaciones locales.
 </div>
 
+
 **Para ejecutarlos:**
 
 - Haga clic en el enlace de cada notebook o súbalo a su Google Drive.
