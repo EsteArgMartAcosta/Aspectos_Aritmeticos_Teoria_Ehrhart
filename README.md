@@ -1,4 +1,4 @@
-# 👩‍💻🩻 Game of the Amazon 🔐🧑‍💻
+# 👩‍💻🩻 Aspectos Aritméticos de la Teoría de Ehrhart🔐🧑‍💻
 <span style="font-size: 24px;"></span>
 _____________________________
 
