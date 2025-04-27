@@ -14,6 +14,12 @@ Se incluyen implementaciones de algoritmos, experimentos numéricos y análisis 
 # 🎖️ Tabla de Contenido 🎖️
 <span style="font-size: 24px;"></span>
 _____________________________
+<p align="center">
+  <a href="https://colab.research.google.com/">
+    <img src="https://lh3.googleusercontent.com/proxy/H3WCIh44e9TkggnR58Vx4CUs1X_D1KjierRM-KPVpK8pCEzSspxn5WeWda2VYfAWaY6-kXxR0RB0iwGawvXAqey_S0936lBXKFvcDR4uOw" alt="Abrir en Colab" width="200">
+  </a>
+</p>
+
 
 1. [Introducción](#introducción)
 2. [Envolvente Convexa](#envolvente-convexa)
@@ -22,30 +28,9 @@ _____________________________
 5. [Experimentos aritméticos](#experimentos-aritméticos)
 6. [Utilidades](#utilidades)
 
-# 👮‍♂️ Reglas Principales 👮‍♀️
-<span style="font-size: 24px;"></span>
-_____________________________
-
-**- Cada jugada consiste en mover una reina y luego disparar una flecha en una dirección.**
-
-**- Las reinas se mueven en líneas rectas en horizontal, vertical o diagonal.**
-
-**- Al disparar una flecha, se crea un bloqueo en la dirección seleccionada, lo que afecta el movimiento de las reinas.**
-
-**- El juego continúa hasta que no sea posible realizar más movimientos.**
-
-![image](https://github.com/EsteArgen/PROYECTO-T.E.A/assets/101402836/7e808ab1-d721-4ea1-98ca-061b5146fb61)
 
 
-# 🥷 Estrategia y Planificación 🥷
-<span style="font-size: 24px;"></span>
-_____________________________________
-**"Game of the Amazon" requiere una estrategia cuidadosa y una planificación avanzada. Los jugadores deben anticipar los movimientos del oponente, bloquear caminos y encontrar oportunidades para atacar. Cada partida es única y presenta desafíos estratégicos emocionantes.**
-
-![image](https://github.com/EsteArgen/PROYECTO-T.E.A/assets/101402836/a78e76e3-1b4a-4b6a-a39c-1aa2dfa4ae57)
-
-
-# 🚨 REQUERIMIENTOS DE EJECUCIÓN 🚨
+# 🥷🚨 REQUERIMIENTOS DE EJECUCIÓN 🚨🥷
 <span style="font-size: 24px;"></span>
 ____________________________________
 **- Instalar pygame: pip install pygame**
