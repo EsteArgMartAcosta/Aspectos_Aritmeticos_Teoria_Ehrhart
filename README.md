@@ -21,7 +21,7 @@ _____________________________
 </p>
 
 
-1. [Introducción](#introducción)
+1. [Construcción Gráficos](#construccion-graficos)
 2. [Envolvente Convexa](#envolvente-convexa)
 3. [Triangulaciones](#triangulaciones-algoritmos)
 4. [Visualización de poliedros](#visualización-de-poliedros)
