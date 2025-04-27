@@ -46,7 +46,7 @@ Cada archivo está vinculado a este repositorio de GitHub, por lo que se puede a
 
 **Para ejecutarlos:**
 
-- Haga clic en el enlace de cada notebook o súbelo a su Google Drive.
+- Haga clic en el enlace de cada notebook o súbalo a su Google Drive.
 - Asegúrese de tener una cuenta de Google activa para usar Google Colab.
 - No se requieren instalaciones adicionales: todas las dependencias necesarias están disponibles en el entorno de Colab.
 
