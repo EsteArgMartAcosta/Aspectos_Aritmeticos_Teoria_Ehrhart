@@ -31,6 +31,14 @@ _____________________________
 # 🥷🚨 REQUERIMIENTOS DE EJECUCIÓN 🚨🥷
 <span style="font-size: 24px;"></span>
 ____________________________________
-**- Instalar pygame: pip install pygame**
 
-**- Instalar pygame-menu: pip install pygame-menu==1.96.1**
+Todos los códigos de este repositorio han sido desarrollados en Google Colab para facilitar su ejecución y visualización.  
+Cada archivo está vinculado a este repositorio de GitHub, por lo que puedes abrir y correr los notebooks directamente en Colab sin necesidad de instalaciones locales.
+
+**Para ejecutarlos:**
+- Haz clic en el enlace de cada notebook o súbelo a tu Google Drive.
+- Asegúrate de tener una cuenta de Google activa para usar Google Colab.
+- No se requieren instalaciones adicionales: todas las dependencias necesarias están disponibles en el entorno de Colab.
+
+> **Nota:** Si prefieres, también puedes descargar los notebooks y ejecutarlos en tu entorno local compatible con Jupyter.
+
