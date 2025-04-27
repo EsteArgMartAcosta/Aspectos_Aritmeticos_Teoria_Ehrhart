@@ -3,8 +3,8 @@
 _____________________________
 
 <div align="justify">
-**Este repositorio contiene los códigos desarrollados durante mi trabajo de grado, enfocados en el estudio de propiedades aritméticas relacionadas con la teoría de Ehrhart.
-Se incluyen implementaciones de algoritmos, experimentos numéricos y análisis computacionales sobre poliedros enteros, funciones de conteo de puntos y polinomios de Ehrhart.**
+Este repositorio contiene los códigos desarrollados durante mi trabajo de grado, enfocados en el estudio de propiedades aritméticas relacionadas con la teoría de Ehrhart.
+Se incluyen implementaciones de algoritmos, experimentos numéricos y análisis computacionales sobre poliedros enteros, funciones de conteo de puntos y polinomios de Ehrhart.
 </div>
 
 <p align="center">
@@ -41,7 +41,7 @@ ____________________________________
 
 <div align="justify">
 Todos los códigos de este repositorio han sido desarrollados en Google Colab para facilitar su ejecución y visualización.  
-Cada archivo está vinculado a este repositorio de GitHub, por lo que puedes abrir y correr los notebooks directamente en Colab sin necesidad de instalaciones locales.
+Cada archivo está vinculado a este repositorio de GitHub, por lo que se puede abrir y correr los notebooks directamente en Colab sin necesidad de instalaciones locales.
 </div>
 
 **Para ejecutarlos:**
