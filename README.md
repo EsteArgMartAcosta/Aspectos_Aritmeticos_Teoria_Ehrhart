@@ -17,7 +17,7 @@ Se incluyen implementaciones de algoritmos, experimentos numéricos y análisis 
 <span style="font-size: 24px;"></span>
 _____________________________
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Zome-like.png/480px-Zome-like.png" alt="Imagen Zome-like"width="300">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Zome-like.png/480px-Zome-like.png" alt="Imagen Zome-like"width="280">
 </p>
 
 
