@@ -1,4 +1,4 @@
-# 👩‍💻🩻 Aspectos Aritméticos de la Teoría de Ehrhart🔐🧑‍💻
+# 👩‍💻🔯⚛️ Aspectos Aritméticos de la Teoría de Ehrhart🔯🕎🧑‍💻
 <span style="font-size: 24px;"></span>
 _____________________________
 
