@@ -51,7 +51,18 @@ Cada archivo está vinculado a este repositorio de GitHub, por lo que se puede a
 
 - Haga clic en el enlace de cada notebook o súbalo a su Google Drive.
 - Asegúrese de tener una cuenta de Google activa para usar Google Colab.
-- No se requieren instalaciones adicionales: todas las dependencias necesarias están disponibles en el entorno de Colab.
+
+> **Importante:** Los notebooks de la carpeta Teoría de Ehrhart en SageMath requieren el uso de SageMath.  
+> Google Colab no incluye SageMath por defecto, por lo que debe instalarse manualmente.
+
+> **Instalación en Colab:**  
+> Para ejecutar SageMath en Google Colab, puede incluir la siguiente celda al comienzo del notebook.  
+> Tenga en cuenta que esta instalación puede tardar varios minutos y no está oficialmente soportada por Google Colab.
+
+!sudo apt update -y
+!sudo apt install -y sagemath
+   
+> Alternativamente, pueden ejecutarse en un entorno local que tenga SageMath instalado, o utilizar plataformas como CoCalc que ofrecen soporte directo para Sage.
 
 > **Nota:** Si prefiere, también puede descargar los notebooks y ejecutarlos en su entorno local compatible con Jupyter.
 
