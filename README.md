@@ -25,9 +25,10 @@ _____________________________
 1. [Construcción Gráficos](#construccion-graficos)
 2. [Envolvente Convexa](#envolvente-convexa)
 3. [Triangulaciones](#triangulaciones-algoritmos)
-4. [Teoría de Ehrhart en SageMath](#visualización-de-poliedros)
-5. [Topología Algebraica (Cohomología de Rham)](#experimentos-aritméticos)
-6. [Geometría Diferencial](#utilidades)
+4. [Teoría de Ehrhart en SageMath](#teoria-ehrhart-sagemath)
+5. [Topología Algebraica (Cohomología de Rham)](#topologia-algebraica)
+6. [Geometría Diferencial](#geometria-diferencial)
+7. [Funciones Zeta](#funciones-zeta)
 
 
 
