@@ -26,7 +26,7 @@ _____________________________
 2. [Envolvente Convexa](#envolvente-convexa)
 3. [Triangulaciones](#triangulaciones-algoritmos)
 4. [Teoría de Ehrhart en SageMath](#visualización-de-poliedros)
-5. [Experimentos aritméticos](#experimentos-aritméticos)
+5. [Topología Algebraica (Cohomología de Rham)](#experimentos-aritméticos)
 6. [Utilidades](#utilidades)
 
 
