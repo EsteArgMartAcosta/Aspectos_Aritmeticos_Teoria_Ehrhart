@@ -27,7 +27,7 @@ _____________________________
 3. [Triangulaciones](#triangulaciones-algoritmos)
 4. [Teoría de Ehrhart en SageMath](#visualización-de-poliedros)
 5. [Topología Algebraica (Cohomología de Rham)](#experimentos-aritméticos)
-6. [Utilidades](#utilidades)
+6. [Geometría Diferencial](#utilidades)
 
 
 
