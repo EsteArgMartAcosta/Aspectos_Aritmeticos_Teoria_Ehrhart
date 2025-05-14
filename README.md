@@ -60,9 +60,11 @@ Cada archivo está vinculado a este repositorio de GitHub, por lo que se puede a
 > Para ejecutar SageMath en Google Colab, puede incluir la siguiente celda al comienzo del notebook.  
 > Tenga en cuenta que esta instalación puede tardar varios minutos y no está oficialmente soportada por Google Colab.
 
+```jsx
 !sudo apt update -y
 !sudo apt install -y sagemath
-   
+```
+
 > Alternativamente, pueden ejecutarse en un entorno local que tenga SageMath instalado, o utilizar plataformas como CoCalc que ofrecen soporte directo para Sage.
 
 > **Nota:** Si prefiere, también puede descargar los notebooks y ejecutarlos en su entorno local compatible con Jupyter.
