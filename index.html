@@ -68,6 +68,7 @@
       z-index: 10;
       max-width: 80%;
       display: none;
+      transition: opacity 0.3s ease;
     }
 
     .modal h2 {
@@ -88,20 +89,19 @@
   <div class="content">
     <h1>Aspectos Aritméticos de la Teoría de Ehrhart</h1>
     <div class="toc">
-      <div class="toc-item" onclick="openModal('1-Construccion_Graficos')">📁 1-Construccion_Graficos</div>
-      <div class="toc-item" onclick="openModal('2-Envolvente_Convexa')">📁 2-Envolvente_Convexa</div>
-      <div class="toc-item" onclick="openModal('3-Triangulaciones')">📁 3-Triangulaciones</div>
-      <div class="toc-item" onclick="openModal('4-Teoria_Ehrhart_SageMath')">📁 4-Teoria_Ehrhart_SageMath</div>
-      <div class="toc-item" onclick="openModal('5-Topologia_Algebraica')">📁 5-Topologia_Algebraica</div>
-      <div class="toc-item" onclick="openModal('6-Geometria_Diferencial')">📁 6-Geometria_Diferencial</div>
-      <div class="toc-item" onclick="openModal('7-Funciones_Zeta')">📁 7-Funciones_Zeta</div>
+      <div class="toc-item" onmouseenter="openModal('1-Construccion_Graficos')" onmouseleave="closeModal()">📁 1-Construccion_Graficos</div>
+      <div class="toc-item" onmouseenter="openModal('2-Envolvente_Convexa')" onmouseleave="closeModal()">📁 2-Envolvente_Convexa</div>
+      <div class="toc-item" onmouseenter="openModal('3-Triangulaciones')" onmouseleave="closeModal()">📁 3-Triangulaciones</div>
+      <div class="toc-item" onmouseenter="openModal('4-Teoria_Ehrhart_SageMath')" onmouseleave="closeModal()">📁 4-Teoria_Ehrhart_SageMath</div>
+      <div class="toc-item" onmouseenter="openModal('5-Topologia_Algebraica')" onmouseleave="closeModal()">📁 5-Topologia_Algebraica</div>
+      <div class="toc-item" onmouseenter="openModal('6-Geometria_Diferencial')" onmouseleave="closeModal()">📁 6-Geometria_Diferencial</div>
+      <div class="toc-item" onmouseenter="openModal('7-Funciones_Zeta')" onmouseleave="closeModal()">📁 7-Funciones_Zeta</div>
     </div>
   </div>
 
   <div class="modal" id="modal">
-    <span class="close" onclick="closeModal()">✖</span>
     <h2 id="modal-title">Título</h2>
-    <p id="modal-content">Aquí va el contenido flotante sobre esa carpeta. Puedes incluir enlaces, archivos, descripciones, y lo que desees.</p>
+    <p id="modal-content">Aquí va el contenido flotante sobre esa carpeta.</p>
   </div>
 
   <script>
