@@ -10,13 +10,12 @@
       background-color: #111;
       color: #eee;
       margin: 0 auto;
-      max-width: 1200px;
+      max-width: 900px;
       padding: 2rem;
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
     }
-
     a {
       color: #4ea8ff;
       text-decoration: none;
@@ -24,47 +23,113 @@
     a:hover {
       text-decoration: underline;
     }
-
     nav {
       margin-bottom: 2rem;
     }
-
     h1 {
       font-weight: 400;
       border-bottom: 1px solid #444;
       padding-bottom: 0.5rem;
       margin-top: 0;
     }
-
-    .iframe-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      margin-top: 2rem;
+    .intro-text {
+      margin: 1rem 0 2rem;
+      font-size: 1.1rem;
+      color: #ccc;
     }
-
-    .iframe-box {
-      flex: 1 1 45%;
-      min-width: 320px;
-      background: rgba(28, 28, 28, 0.9);
+    .iframe-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .iframe-card {
+      background: rgba(28,28,28,0.9);
       padding: 1rem;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+      flex: 1 1 300px;
+      max-width: 450px;
+      cursor: pointer;
+      transition: transform 0.2s;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
-    .iframe-box iframe {
-      border-radius: 8px;
-      max-width: 100%;
-      height: auto;
+    .iframe-card:hover {
+      transform: scale(1.05);
+    }
+    .iframe-card h2 {
+      margin: 0 0 1rem;
+      font-size: 1.4rem;
+    }
+    .iframe-card iframe {
+      border-radius: 10px;
+      width: 100%;
+      height: 250px;
+      pointer-events: none; /* evitar interacción en vista previa */
     }
 
-    @media (max-width: 768px) {
-      .iframe-box {
-        flex: 1 1 100%;
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      position: relative;
+      background: #111;
+      border-radius: 12px;
+      max-width: 90vw;
+      max-height: 90vh;
+      width: 900px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.9);
+    }
+    .modal-content iframe {
+      width: 100%;
+      height: 80vh;
+      border-radius: 12px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.8rem;
+      color: #ccc;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+      background: rgba(40,40,40,0.7);
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .modal-close:hover {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .iframe-card iframe {
+        height: 180px;
+      }
+      .modal-content {
+        width: 95vw;
+      }
+      .modal-content iframe {
+        height: 70vh;
       }
     }
   </style>
@@ -76,32 +141,69 @@
 
   <h1>10 Animaciones</h1>
 
-  <div class="iframe-container">
-    <div class="iframe-box">
+  <p class="intro-text">
+    Aquí podrás interactuar con animaciones matemáticas y visualizaciones interactivas que ilustran conceptos clave de tu trabajo de grado. Haz clic en cualquiera para abrirlo en tamaño grande y explorar.
+  </p>
+
+  <div class="iframe-grid">
+    <div class="iframe-card" data-src="https://www.geogebra.org/material/iframe/id/dk2mqwwx/width/1366/height/651/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false">
       <h2>Teorema de Pick Estándar TDG</h2>
-      <iframe 
-        scrolling="no" 
-        title="Teorema de Pick Estándar TDG" 
-        src="https://www.geogebra.org/material/iframe/id/dk2mqwwx/width/1366/height/651/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false" 
-        width="100%" 
-        height="400" 
-        style="border:0px; border-radius:8px;"
-        >
-      </iframe>
+      <iframe scrolling="no" title="Teorema de Pick Estándar TDG" src="" frameborder="0"></iframe>
     </div>
 
-    <div class="iframe-box">
+    <div class="iframe-card" data-src="https://www.desmos.com/calculator/4tj5gdk8oz?embed">
       <h2>Calculadora Desmos</h2>
-      <iframe 
-        src="https://www.desmos.com/calculator/4tj5gdk8oz?embed" 
-        width="100%" 
-        height="400" 
-        style="border: 1px solid #ccc; border-radius:8px;" 
-        frameborder="0" 
-        >
-      </iframe>
+      <iframe src="" frameborder="0"></iframe>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="modal-content">
+      <span class="modal-close" aria-label="Cerrar">&times;</span>
+      <iframe src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalIframe = modal.querySelector('iframe');
+    const modalClose = modal.querySelector('.modal-close');
+    const cards = document.querySelectorAll('.iframe-card');
+
+    cards.forEach(card => {
+      // Set preview iframe src from data-src
+      const previewIframe = card.querySelector('iframe');
+      previewIframe.src = card.dataset.src;
+
+      card.addEventListener('click', () => {
+        modal.classList.add('active');
+        modalIframe.src = card.dataset.src;
+        modal.setAttribute('aria-hidden', 'false');
+        modal.focus();
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('active');
+      modalIframe.src = '';
+      modal.setAttribute('aria-hidden', 'true');
+    });
+
+    // Close modal on clicking outside content
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modalClose.click();
+      }
+    });
+
+    // Close modal with ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modalClose.click();
+      }
+    });
+  </script>
 
 </body>
 </html>
