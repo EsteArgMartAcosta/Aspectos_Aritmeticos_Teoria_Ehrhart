@@ -16,6 +16,51 @@
       position: relative;
       overflow-x: hidden;
     }
+
+    /* GIF esquina superior izquierda */
+    #gif-top-left {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 150px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* GIF esquina superior derecha */
+    #gif-top-right {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 150px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* GIF esquina inferior izquierda */
+    #gif-bottom-left {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 150px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* GIF esquina inferior derecha */
+    #gif-bottom-right {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 150px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
+    }
+
     a {
       color: #4ea8ff;
       text-decoration: none;
@@ -67,7 +112,7 @@
       border-radius: 10px;
       width: 100%;
       height: 250px;
-      pointer-events: none; /* evitar interacción en vista previa */
+      pointer-events: none;
     }
 
     /* Modal Styles */
@@ -139,6 +184,12 @@
     <a href="index.html">← Volver a la página principal</a>
   </nav>
 
+  <!-- GIFs en las esquinas -->
+  <img id="gif-top-left" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjc5eTZwcjcxeG05YnNocWtmZTgybTYwcTIzb3gxY3lpem00N3N5NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UVokgC1UPMgFqsiLPm/giphy.gif" alt="GIF esquina superior izquierda" />
+  <img id="gif-top-right" src="https://i.gifer.com/LevT.gif" alt="GIF esquina superior derecha" />
+  <img id="gif-bottom-left" src="https://i.makeagif.com/media/7-07-2016/lM4bIX.gif" alt="GIF esquina inferior izquierda" />
+  <img id="gif-bottom-right" src="https://i.pinimg.com/originals/2f/a7/d4/2fa7d40e071ee0f7e78011e0cd178fe5.gif" alt="GIF esquina inferior derecha" />
+
   <h1>10 Animaciones</h1>
 
   <p class="intro-text">
@@ -172,7 +223,6 @@
     const cards = document.querySelectorAll('.iframe-card');
 
     cards.forEach(card => {
-      // Set preview iframe src from data-src
       const previewIframe = card.querySelector('iframe');
       previewIframe.src = card.dataset.src;
 
@@ -190,14 +240,12 @@
       modal.setAttribute('aria-hidden', 'true');
     });
 
-    // Close modal on clicking outside content
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modalClose.click();
       }
     });
 
-    // Close modal with ESC key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modal.classList.contains('active')) {
         modalClose.click();
