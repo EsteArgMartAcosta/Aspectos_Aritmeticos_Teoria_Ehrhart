@@ -29,6 +29,7 @@ _____________________________
 5. [Topología Algebraica (Cohomología de Rham)](#topologia-algebraica)
 6. [Geometría Diferencial](#geometria-diferencial)
 7. [Funciones Zeta](#funciones-zeta)
+8. [Grafos y Politopos](#Grafos-Politopos)
 
 
 
