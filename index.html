@@ -14,7 +14,7 @@
       position: relative;
     }
 
-    /* 🎞️ Fondo con todos los GIFs */
+    /* 🎞️ Fondo con GIFs de politopos */
     body::before {
       content: '';
       position: fixed;
@@ -23,7 +23,7 @@
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      opacity: 0.07; /* Controla qué tanto se ven */
+      opacity: 0.06; /* Ajusta la intensidad del fondo */
       background-image:
         url('https://robertlovespi.net/wp-content/uploads/2013/04/6-ex-600-cell-hexacosichoron1.gif'),
         url('https://upload.wikimedia.org/wikipedia/commons/1/13/Hypertorus.gif'),
@@ -31,9 +31,7 @@
         url('https://scx2.b-cdn.net/gfx/news/2015/researcherbu.gif'),
         url('https://i.gifer.com/origin/20/20d6c5793393c2f53632f875a48f92f8_w200.gif'),
         url('https://en.m.wikipedia.org/wiki/File:600-cell.gif'),
-        url('https://media.tenor.com/images/5d0c66343783de43c5762a56d268993d/tenor.gif'),
-        url('https://i.giphy.com/l0HlRZhGvMVnA4xwY.gif'),
-        url('https://bendwavy.org/klitzing/png/gif/975-Sisp.gif');
+        url('https://media.tenor.com/images/5d0c66343783de43c5762a56d268993d/tenor.gif');
       background-repeat: no-repeat;
       background-position:
         top left,
@@ -42,8 +40,6 @@
         center right,
         bottom left,
         bottom right,
-        60% 80%,
-        center center,
         center center;
       background-size:
         180px,
@@ -52,10 +48,31 @@
         220px,
         180px,
         200px,
-        240px,
-        300px,
-        300px;
+        240px;
       background-attachment: fixed;
+    }
+
+    /* GIF extra centrado en la mitad */
+    #center-gif {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      width: 300px;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    /* GIF extra en la parte inferior derecha */
+    #bottom-right-gif {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 220px;
+      opacity: 0.08;
+      z-index: -1;
+      pointer-events: none;
     }
 
     header {
@@ -77,6 +94,8 @@
       padding: 2rem;
       max-width: 1200px;
       margin: auto;
+      position: relative;
+      z-index: 1; /* Asegura que quede encima de los gifs */
     }
 
     .card {
@@ -128,6 +147,12 @@
       header h1 {
         font-size: 2rem;
       }
+      #center-gif {
+        width: 180px;
+      }
+      #bottom-right-gif {
+        width: 150px;
+      }
     }
   </style>
 </head>
@@ -135,6 +160,9 @@
   <header>
     <h1>Aspectos Aritméticos de la Teoría de Ehrhart</h1>
   </header>
+
+  <img id="center-gif" src="https://i.pinimg.com/originals/4e/76/3b/4e763b22204498fddaae6707d4fc973b.gif" alt="GIF central animado" />
+  <img id="bottom-right-gif" src="https://bendwavy.org/klitzing/png/gif/975-Sisp.gif" alt="GIF inferior derecho animado" />
 
   <section class="grid">
     <div class="card">
