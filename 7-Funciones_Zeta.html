@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Funciones Zeta</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 0 auto;
+      max-width: 900px;
+      padding: 1rem 2rem;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    #gif-top-left {
+      position: fixed;
+      top: 0; left: 0;
+      width: 250px; opacity: 0.07;
+      z-index: -1; pointer-events: none;
+    }
+    #gif-top-right {
+      position: fixed;
+      top: 0; right: 0;
+      width: 250px; opacity: 0.07;
+      z-index: -1; pointer-events: none;
+    }
+    #gif-bottom-left {
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 250px; opacity: 0.07;
+      z-index: -1; pointer-events: none;
+    }
+    #gif-bottom-right {
+      position: fixed;
+      bottom: 0; right: 0;
+      width: 250px; opacity: 0.07;
+      z-index: -1; pointer-events: none;
+    }
+    a {
+      color: #4ea8ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1, h2 {
+      font-weight: 400;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+    pre {
+      background: #222;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #d1d1d1;
+      margin-top: 1rem;
+    }
+    .code-section {
+      margin-top: 1rem;
+      border-left: 4px solid #4ea8ff;
+      padding-left: 1rem;
+    }
+    .notebook-link {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #4ea8ff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .notebook-link:hover {
+      background: #367acc;
+    }
+    nav {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">← Volver a la página principal</a>
+  </nav>
+
+  <img id="gif-top-left" src="https://i.pinimg.com/originals/a7/be/b7/a7beb7f8a8f090b3f7c857543c6e2f72.gif" alt="GIF esquina superior izquierda" />
+  <img id="gif-top-right" src="https://45.media.tumblr.com/6785bae27b8f888fe825f0ade95796a3/tumblr_noenkbeTSw1qjmwryo1_500.gif" alt="GIF esquina superior derecha" />
+  <img id="gif-bottom-left" src="https://giffiles.alphacoders.com/787/7879.gif" alt="GIF esquina inferior izquierda" />
+  <img id="gif-bottom-right" src="https://i.makeagif.com/media/11-21-2017/pf54Ek.gif" alt="GIF esquina inferior derecha" />
+
+  <h1>Funciones Zeta</h1>
+
+  <section>
+    <p>Estudio analítico de funciones zeta relacionadas con poliedros y sus propiedades numéricas.</p>
+  </section>
+
+  <section>
+    <h2>Ejemplo de código</h2>
+    <div class="code-section">
+      <pre><code># Ejemplo simple para calcular sumas zeta en Python
+import numpy as np
+
+def zeta(s, n_terms=100):
+    return sum(1 / k**s for k in range(1, n_terms+1))
+
+print(zeta(2))
+</code></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Notebook Colab</h2>
+    <a class="notebook-link" href="https://colab.research.google.com/drive/your-notebook-id" target="_blank" rel="noopener noreferrer">
+      Abrir notebook en Colab
+    </a>
+  </section>
+</body>
+</html>
