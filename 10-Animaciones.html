@@ -89,6 +89,7 @@
       justify-content: center;
     }
     .iframe-card {
+      position: relative;
       background: rgba(28,28,28,0.9);
       padding: 1rem;
       border-radius: 12px;
@@ -100,6 +101,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      overflow: hidden;
     }
     .iframe-card:hover {
       transform: scale(1.05);
@@ -107,12 +109,41 @@
     .iframe-card h2 {
       margin: 0 0 1rem;
       font-size: 1.4rem;
+      z-index: 2;
     }
     .iframe-card iframe {
       border-radius: 10px;
       width: 100%;
       height: 250px;
       pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Overlay descripción técnica */
+    .desc-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(17, 17, 17, 0.95);
+      color: #eee;
+      padding: 1rem;
+      box-sizing: border-box;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      overflow-y: auto;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      z-index: 10;
+    }
+    .iframe-card:hover .desc-overlay {
+      opacity: 1;
+      visibility: visible;
+      cursor: default;
+    }
+    .iframe-card:hover iframe {
+      opacity: 0.1;
     }
 
     /* Modal Styles */
@@ -160,6 +191,7 @@
       line-height: 32px;
       text-align: center;
       transition: background 0.3s;
+      z-index: 20;
     }
     .modal-close:hover {
       background: rgba(255,255,255,0.2);
@@ -200,11 +232,19 @@
     <div class="iframe-card" data-src="https://www.geogebra.org/material/iframe/id/dk2mqwwx/width/1366/height/651/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/false">
       <h2>Teorema de Pick Estándar TDG</h2>
       <iframe scrolling="no" title="Teorema de Pick Estándar TDG" src="" frameborder="0"></iframe>
+      <div class="desc-overlay">
+        <strong>Teorema de Pick:</strong><br>
+        Esta animación implementa la visualización del Teorema de Pick, que proporciona la fórmula <em>A = I + B/2 - 1</em>, donde A es el área, I el número de puntos enteros interiores y B los puntos en el borde del polígono con vértices en \(\mathbb{Z}^2\). Permite manipular el polígono y observar cómo varían estos valores en tiempo real.
+      </div>
     </div>
 
     <div class="iframe-card" data-src="https://www.desmos.com/calculator/4tj5gdk8oz?embed">
       <h2>Calculadora Desmos</h2>
       <iframe src="" frameborder="0"></iframe>
+      <div class="desc-overlay">
+        <strong>Función zeta de Riemann:</strong><br>
+        Visualización interactiva de la función \(\zeta(s) = \sum_{n=1}^\infty n^{-s}\), clave en teoría analítica de números y distribución de primos. Permite explorar valores reales y complejos, facilitando la comprensión de su comportamiento dinámico.
+      </div>
     </div>
   </div>
 
