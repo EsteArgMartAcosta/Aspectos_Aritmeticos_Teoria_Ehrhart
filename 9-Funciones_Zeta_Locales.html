@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Funciones Zeta Locales</title>
+
+  <!-- MathJax CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 0 auto;
+      max-width: 900px;
+      padding: 2rem;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* GIF esquinas */
+    #gif-top-left {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 150px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
+    }
+    #gif-top-right {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 150px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
+    }
+    #gif-bottom-left {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 150px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
+    }
+    #gif-bottom-right {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 150px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    a {
+      color: #4ea8ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    nav {
+      margin-bottom: 2rem;
+    }
+    h1 {
+      font-weight: 400;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-top: 0;
+    }
+    .intro-text {
+      margin: 1rem 0 2rem;
+      font-size: 1.1rem;
+      color: #ccc;
+      text-align: justify;
+    }
+
+    .iframe-card {
+      position: relative;
+      background: rgba(28,28,28,0.9);
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+      cursor: pointer;
+      max-width: 700px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .iframe-card h2 {
+      margin: 0 0 1rem;
+      font-size: 1.6rem;
+      text-align: center;
+      z-index: 2;
+    }
+    .iframe-card iframe {
+      border-radius: 10px;
+      width: 100%;
+      height: 300px;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      display: block;
+      margin: 0 auto;
+    }
+    .iframe-card:hover iframe {
+      opacity: 0.1;
+    }
+
+    /* Overlay descripción técnica */
+    .desc-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(17, 17, 17, 0.95);
+      color: #eee;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      overflow-y: auto;
+      border-radius: 12px;
+      font-size: 1rem;
+      line-height: 1.5;
+      z-index: 10;
+      text-align: justify;
+      font-family: 'Georgia', serif;
+    }
+    .iframe-card:hover .desc-overlay {
+      opacity: 1;
+      visibility: visible;
+      cursor: default;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0; top: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      position: relative;
+      background: #111;
+      border-radius: 12px;
+      max-width: 90vw;
+      max-height: 90vh;
+      width: 900px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.9);
+    }
+    .modal-content iframe {
+      width: 100%;
+      height: 80vh;
+      border-radius: 12px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 1.8rem;
+      color: #ccc;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+      background: rgba(40,40,40,0.7);
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      transition: background 0.3s;
+      z-index: 20;
+    }
+    .modal-close:hover {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .iframe-card iframe {
+        height: 200px;
+      }
+      .modal-content {
+        width: 95vw;
+      }
+      .modal-content iframe {
+        height: 70vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">← Volver a la página principal</a>
+  </nav>
+
+  <!-- GIFs en las esquinas -->
+  <img id="gif-top-left" src="https://i.pinimg.com/originals/b8/69/d1/b869d1f8679149c461531dc203c517b5.gif" alt="GIF esquina superior izquierda" />
+  <img id="gif-top-right" src="https://media0.giphy.com/media/3oKIPaYYYLafTAM0i4/200w.gif?cid=6c09b952ynoqrltlex7yaxao5sw2v8cju5q8hp8j8o4cxz8l&ep=v1_gifs_search&rid=200w.gif&ct=g" alt="GIF esquina superior derecha" />
+  <img id="gif-bottom-left" src="https://i.pinimg.com/originals/00/f0/0e/00f00e72d99f9afc4990a4f0f47bc3af.gif" alt="GIF esquina inferior izquierda" />
+  <img id="gif-bottom-right" src="https://i.gifer.com/DzED.gif" alt="GIF esquina inferior derecha" />
+
+  <h1>Funciones Zeta Locales</h1>
+
+  <p class="intro-text">
+    En esta sección se presenta una visualización interactiva destinada al estudio de las funciones zeta locales, objetos clave en teoría de números y geometría aritmética que generalizan las propiedades analíticas de las funciones zeta clásicas.
+  </p>
+
+  <div class="iframe-card" data-src="PUTAQUI_TU_IFRAME_URL">
+    <h2>Visualización Funciones Zeta Locales</h2>
+    <iframe src="" frameborder="0" title="Funciones Zeta Locales"></iframe>
+    <div class="desc-overlay">
+      Las funciones zeta locales extienden el concepto clásico de la función zeta de Riemann a contextos locales asociados a cuerpos locales y representaciones de grupos reductivos.  
+      Se definen como integrales o series que codifican información aritmética profunda, como  
+      \[
+        \zeta_p(s) = \int_{G} |f(g)|^s \, d\mu(g),
+      \]  
+      donde \(G\) es un grupo localmente compacto, \(f\) una función adecuada y \(\mu\) una medida de Haar.  
+      Esta visualización facilita la exploración numérica y gráfica de dichas funciones, apoyando el análisis teórico con herramientas computacionales.
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="modal-content">
+      <span class="modal-close" aria-label="Cerrar">&times;</span>
+      <iframe src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalIframe = modal.querySelector('iframe');
+    const modalClose = modal.querySelector('.modal-close');
+    const cards = document.querySelectorAll('.iframe-card');
+
+    cards.forEach(card => {
+      const previewIframe = card.querySelector('iframe');
+      previewIframe.src = card.dataset.src;
+
+      card.addEventListener('click', () => {
+        modal.classList.add('active');
+        modalIframe.src = card.dataset.src;
+        modal.setAttribute('aria-hidden', 'false');
+        modal.focus();
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      modal.classList.remove('active');
+      modalIframe.src = '';
+      modal.setAttribute('aria-hidden', 'true');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modalClose.click();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modalClose.click();
+      }
+    });
+  </script>
+</body>
+</html>
