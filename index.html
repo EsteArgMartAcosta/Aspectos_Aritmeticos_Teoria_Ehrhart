@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trabajo de Grado – Aspectos Aritméticos</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background: #0f2027;
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .toc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .toc-item {
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    .toc-item:hover {
+      background: rgba(255, 255, 255, 0.3);
+      color: black;
+    }
+
+    .modal {
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.95);
+      color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      z-index: 10;
+      max-width: 80%;
+      display: none;
+    }
+
+    .modal h2 {
+      margin-top: 0;
+    }
+
+    .close {
+      cursor: pointer;
+      float: right;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="content">
+    <h1>Aspectos Aritméticos de la Teoría de Ehrhart</h1>
+    <div class="toc">
+      <div class="toc-item" onclick="openModal('1-Construccion_Graficos')">📁 1-Construccion_Graficos</div>
+      <div class="toc-item" onclick="openModal('2-Envolvente_Convexa')">📁 2-Envolvente_Convexa</div>
+      <div class="toc-item" onclick="openModal('3-Triangulaciones')">📁 3-Triangulaciones</div>
+      <div class="toc-item" onclick="openModal('4-Teoria_Ehrhart_SageMath')">📁 4-Teoria_Ehrhart_SageMath</div>
+      <div class="toc-item" onclick="openModal('5-Topologia_Algebraica')">📁 5-Topologia_Algebraica</div>
+      <div class="toc-item" onclick="openModal('6-Geometria_Diferencial')">📁 6-Geometria_Diferencial</div>
+      <div class="toc-item" onclick="openModal('7-Funciones_Zeta')">📁 7-Funciones_Zeta</div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal">
+    <span class="close" onclick="closeModal()">✖</span>
+    <h2 id="modal-title">Título</h2>
+    <p id="modal-content">Aquí va el contenido flotante sobre esa carpeta. Puedes incluir enlaces, archivos, descripciones, y lo que desees.</p>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalContent = document.getElementById('modal-content');
+
+    const contentMap = {
+      "1-Construccion_Graficos": {
+        title: "1. Construcción de Gráficos",
+        text: "Contiene scripts y ejemplos para generar gráficos que visualizan estructuras poligonales y funciones discretas."
+      },
+      "2-Envolvente_Convexa": {
+        title: "2. Envolvente Convexa",
+        text: "Análisis geométrico y visual de la envolvente convexa, con experimentos computacionales sobre puntos en el plano."
+      },
+      "3-Triangulaciones": {
+        title: "3. Triangulaciones",
+        text: "Incluye algoritmos de triangulación y su relación con el conteo de puntos enteros en poliedros."
+      },
+      "4-Teoria_Ehrhart_SageMath": {
+        title: "4. Teoría de Ehrhart con SageMath",
+        text: "Materiales interactivos y notebooks en SageMath para explorar funciones de Ehrhart y sus propiedades."
+      },
+      "5-Topologia_Algebraica": {
+        title: "5. Topología Algebraica",
+        text: "Notas, diagramas y herramientas relacionadas con homología y su uso en la teoría geométrica discreta."
+      },
+      "6-Geometria_Diferencial": {
+        title: "6. Geometría Diferencial",
+        text: "Exploración de conceptos diferenciales aplicados a estructuras poligonales y funciones relacionadas."
+      },
+      "7-Funciones_Zeta": {
+        title: "7. Funciones Zeta",
+        text: "Estudio analítico de funciones zeta asociadas a poliedros, incluyendo aspectos numéricos y visuales."
+      }
+    };
+
+    function openModal(id) {
+      modalTitle.innerText = contentMap[id].title;
+      modalContent.innerText = contentMap[id].text;
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js@master/demo/particles.json');
+  </script>
+</body>
+</html>
