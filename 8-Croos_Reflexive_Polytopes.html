@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Politopos Reflexivos y Cruzados</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 0 auto;
+      max-width: 900px;
+      padding: 1rem 2rem;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    #gif-top-left {
+      position: fixed;
+      top: 0; left: 0;
+      width: 250px; opacity: 0.07;
+      z-index: -1; pointer-events: none;
+    }
+    #gif-top-right {
+      position: fixed;
+      top: 0; right: 0;
+      width: 250px; opacity: 0.07;
+      z-index: -1; pointer-events: none;
+    }
+    #gif-bottom-left {
+      position: fixed;
+      bottom: 0; left: 0;
+      width: 250px; opacity: 0.07;
+      z-index: -1; pointer-events: none;
+    }
+    #gif-bottom-right {
+      position: fixed;
+      bottom: 0; right: 0;
+      width: 250px; opacity: 0.07;
+      z-index: -1; pointer-events: none;
+    }
+    a {
+      color: #4ea8ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1, h2 {
+      font-weight: 400;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+    pre {
+      background: #222;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #d1d1d1;
+      margin-top: 1rem;
+    }
+    .code-section {
+      margin-top: 1rem;
+      border-left: 4px solid #4ea8ff;
+      padding-left: 1rem;
+    }
+    .notebook-link {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #4ea8ff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .notebook-link:hover {
+      background: #367acc;
+    }
+    nav {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">← Volver a la página principal</a>
+  </nav>
+
+  <img id="gif-top-left" src="https://i.gifer.com/origin/86/867017cf91a44c104cfa18c3cc42898b_w200.gif" alt="GIF esquina superior izquierda" />
+  <img id="gif-top-right" src="https://i.gifer.com/origin/aa/aa589973baf06a2e34b713a35c5cf7b5_w200.gif" alt="GIF esquina superior derecha" />
+  <img id="gif-bottom-left" src="https://i.gifer.com/B3M9.gif" alt="GIF esquina inferior izquierda" />
+  <img id="gif-bottom-right" src="https://i.gifer.com/embedded/download/YYqc.gif" alt="GIF esquina inferior derecha" />
+
+  <h1>Topología Algebraica</h1>
+
+  <section>
+    <p>Exploración de conceptos y herramientas de topología algebraica aplicados a objetos geométricos y poliedros.</p>
+  </section>
+
+  <section>
+    <h2>Ejemplo de código</h2>
+    <div class="code-section">
+      <pre><code># Ejemplo de cálculo de homología simplicial en Python con Gudhi
+import gudhi
+
+simplex_tree = gudhi.SimplexTree()
+simplex_tree.insert([0,1,2])
+simplex_tree.insert([1,2,3])
+
+print("Homología:")
+print(simplex_tree.persistence())
+</code></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Notebook Colab</h2>
+    <a class="notebook-link" href="https://colab.research.google.com/drive/your-notebook-id" target="_blank" rel="noopener noreferrer">
+      Abrir notebook en Colab
+    </a>
+  </section>
+</body>
+</html>
