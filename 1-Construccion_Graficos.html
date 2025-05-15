@@ -9,11 +9,34 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #111;
       color: #eee;
-      margin: 2rem auto;
+      margin: 0 auto;
       max-width: 900px;
       padding: 1rem 2rem;
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    /* Fondo con GIFs animados */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      opacity: 0.06;
+      background-image:
+        url('https://i.pinimg.com/originals/a7/be/b7/a7beb7f8a8f090b3f7c857543c6e2f72.gif'),
+        url('https://45.media.tumblr.com/6785bae27b8f888fe825f0ade95796a3/tumblr_noenkbeTSw1qjmwryo1_500.gif'),
+        url('https://gifer.com/en/UWaR.gif'),
+        url('https://ar.pinterest.com/pin/705446729116046933/');
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+      background-position: top left, bottom right, center left, center right;
+      background-size: 300px, 300px, 250px, 250px;
+      background-attachment: fixed;
+    }
+
     a {
       color: #4ea8ff;
       text-decoration: none;
