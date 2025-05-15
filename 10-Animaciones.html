@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>10 Animaciones</title>
+
+  <!-- MathJax CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -126,16 +130,18 @@
       width: 100%; height: 100%;
       background: rgba(17, 17, 17, 0.95);
       color: #eee;
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       box-sizing: border-box;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease;
       overflow-y: auto;
       border-radius: 12px;
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-size: 1rem;
+      line-height: 1.5;
       z-index: 10;
+      text-align: justify;
+      font-family: 'Georgia', serif;
     }
     .iframe-card:hover .desc-overlay {
       opacity: 1;
@@ -233,8 +239,13 @@
       <h2>Teorema de Pick Estándar TDG</h2>
       <iframe scrolling="no" title="Teorema de Pick Estándar TDG" src="" frameborder="0"></iframe>
       <div class="desc-overlay">
-        <strong>Teorema de Pick:</strong><br>
-        Esta animación implementa la visualización del Teorema de Pick, que proporciona la fórmula <em>A = I + B/2 - 1</em>, donde A es el área, I el número de puntos enteros interiores y B los puntos en el borde del polígono con vértices en \(\mathbb{Z}^2\). Permite manipular el polígono y observar cómo varían estos valores en tiempo real.
+        <strong>Teorema de Pick:</strong><br />
+        Esta animación implementa la visualización del Teorema de Pick, que proporciona la fórmula:  
+        \[
+          A = I + \frac{B}{2} - 1,
+        \]  
+        donde \(A\) es el área del polígono, \(I\) es el número de puntos enteros interiores y \(B\) es el número de puntos enteros en el borde del polígono cuyos vértices pertenecen a \(\mathbb{Z}^2\).  
+        La animación permite manipular el polígono y observar en tiempo real cómo varían estos valores.
       </div>
     </div>
 
@@ -242,8 +253,13 @@
       <h2>Calculadora Desmos</h2>
       <iframe src="" frameborder="0"></iframe>
       <div class="desc-overlay">
-        <strong>Función zeta de Riemann:</strong><br>
-        Visualización interactiva de la función \(\zeta(s) = \sum_{n=1}^\infty n^{-s}\), clave en teoría analítica de números y distribución de primos. Permite explorar valores reales y complejos, facilitando la comprensión de su comportamiento dinámico.
+        <strong>Función zeta de Riemann:</strong><br />
+        La función zeta de Riemann, definida para \(\Re(s) > 1\) por  
+        \[
+          \zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s},
+        \]  
+        y extendida analíticamente al plano complejo excepto en \(s=1\), es fundamental en teoría analítica de números y la distribución de números primos.  
+        Esta visualización interactiva permite explorar sus valores reales y complejos, facilitando la comprensión de su comportamiento dinámico y su importancia matemática.
       </div>
     </div>
   </div>
@@ -292,6 +308,5 @@
       }
     });
   </script>
-
 </body>
 </html>
