@@ -204,7 +204,21 @@
       color: white;
     }
 
-    @media (max-width: 600px) {
+    /* Nueva sección de poliedros 3D */
+    #polyhedron-viewer {
+      width: 600px;
+      height: 600px;
+      margin: 3rem auto 2rem auto;
+      background: #222;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    }
+
+    @media (max-width: 650px) {
+      #polyhedron-viewer {
+        width: 100%;
+        height: 400px;
+      }
       .iframe-card iframe {
         height: 180px;
       }
@@ -264,6 +278,10 @@
     </div>
   </div>
 
+  <!-- Nueva sección para poliedros 3D -->
+  <h2 style="text-align:center; margin-top:3rem;">Visualización 3D de Poliedros</h2>
+  <div id="polyhedron-viewer"></div>
+
   <!-- Modal -->
   <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
     <div class="modal-content">
@@ -272,6 +290,7 @@
     </div>
   </div>
 
+  <!-- Scripts -->
   <script>
     const modal = document.getElementById('modal');
     const modalIframe = modal.querySelector('iframe');
@@ -306,6 +325,88 @@
       if (e.key === 'Escape' && modal.classList.contains('active')) {
         modalClose.click();
       }
+    });
+  </script>
+
+  <!-- Three.js y OBJLoader para poliedros 3D -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/examples/js/loaders/OBJLoader.js"></script>
+
+  <script>
+    const container = document.getElementById('polyhedron-viewer');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.set(0, 0, 5);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(5, 10, 7.5);
+    scene.add(directionalLight);
+
+    const loader = new THREE.OBJLoader();
+
+    const models = [
+      '3-Triangulaciones/Poliedros/modelo1.obj',
+      '3-Triangulaciones/Poliedros/modelo2.obj',
+      '3-Triangulaciones/Poliedros/modelo3.obj',
+      // Agrega aquí todas las rutas a tus archivos OBJ
+    ];
+
+    let currentModelIndex = 0;
+    let currentObject = null;
+
+    function loadModel(index) {
+      if(currentObject) {
+        scene.remove(currentObject);
+        currentObject.traverse(child => {
+          if(child.geometry) child.geometry.dispose();
+          if(child.material) {
+            if(Array.isArray(child.material)) {
+              child.material.forEach(m => m.dispose());
+            } else {
+              child.material.dispose();
+            }
+          }
+        });
+        currentObject = null;
+      }
+
+      loader.load(models[index], obj => {
+        currentObject = obj;
+        currentObject.scale.set(1, 1, 1);
+        currentObject.position.set(0, 0, 0);
+        scene.add(currentObject);
+      });
+    }
+
+    loadModel(currentModelIndex);
+
+    setInterval(() => {
+      currentModelIndex = (currentModelIndex + 1) % models.length;
+      loadModel(currentModelIndex);
+    }, 3000);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if(currentObject) {
+        currentObject.rotation.y += 0.01;
+        currentObject.rotation.x += 0.005;
+      }
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
     });
   </script>
 </body>
