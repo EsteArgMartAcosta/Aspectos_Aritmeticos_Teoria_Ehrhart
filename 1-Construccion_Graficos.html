@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Construcción de Gráficos</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 2rem auto;
+      max-width: 900px;
+      padding: 1rem 2rem;
+      line-height: 1.6;
+    }
+    a {
+      color: #4ea8ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1, h2 {
+      font-weight: 400;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+    pre {
+      background: #222;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #d1d1d1;
+      margin-top: 1rem;
+    }
+    .code-section {
+      margin-top: 1rem;
+      border-left: 4px solid #4ea8ff;
+      padding-left: 1rem;
+    }
+    .notebook-link {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #4ea8ff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .notebook-link:hover {
+      background: #367acc;
+    }
+    nav {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">← Volver a la página principal</a>
+  </nav>
+
+  <h1>Construcción de Gráficos</h1>
+  
+  <section>
+    <p>En esta sección describimos los métodos y teorías para construir gráficos que representan estructuras poligonales y funciones discretas.</p>
+  </section>
+
+  <section>
+    <h2>Ejemplo de código</h2>
+    <div class="code-section">
+      <pre><code>import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+plt.plot(x, y)
+plt.show()
+</code></pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Notebook Colab</h2>
+    <a class="notebook-link" href="https://colab.research.google.com/drive/your-notebook-id" target="_blank" rel="noopener noreferrer">
+      Abrir notebook en Colab
+    </a>
+  </section>
+</body>
+</html>
