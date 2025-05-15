@@ -3,157 +3,126 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Trabajo de Grado – Aspectos Aritméticos</title>
+  <title>Aspectos Aritméticos de la Teoría de Ehrhart</title>
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
       font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
       color: white;
-      background: #0f2027;
-      overflow: hidden;
     }
 
-    #particles-js {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .content {
-      position: relative;
-      z-index: 1;
-      padding: 2rem;
+    header {
       text-align: center;
+      padding: 5rem 1rem 2rem;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      font-weight: 300;
     }
 
-    .toc {
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 2rem;
+      justify-content: space-between;
     }
 
-    .toc-item {
-      padding: 1rem 2rem;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      width: fit-content;
+    .card:hover {
+      background: #2a2a2a;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
     }
 
-    .toc-item:hover {
-      background: rgba(255, 255, 255, 0.3);
-      color: black;
-    }
-
-    .modal {
-      position: fixed;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.95);
-      color: white;
-      padding: 2rem;
-      border-radius: 10px;
-      z-index: 10;
-      max-width: 80%;
-      display: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .modal h2 {
+    .card h2 {
       margin-top: 0;
+      font-size: 1.5rem;
+      font-weight: 400;
     }
 
-    .close {
+    .card p {
+      flex: 1;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .card button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
-      float: right;
-      font-weight: bold;
-      font-size: 1.2rem;
+      transition: background 0.3s;
+    }
+
+    .card button:hover {
+      background: #ddd;
     }
   </style>
 </head>
 <body>
-  <div id="particles-js"></div>
-
-  <div class="content">
+  <header>
     <h1>Aspectos Aritméticos de la Teoría de Ehrhart</h1>
-    <div class="toc">
-      <div class="toc-item" onmouseenter="openModal('1-Construccion_Graficos')" onmouseleave="closeModal()">📁 1-Construccion_Graficos</div>
-      <div class="toc-item" onmouseenter="openModal('2-Envolvente_Convexa')" onmouseleave="closeModal()">📁 2-Envolvente_Convexa</div>
-      <div class="toc-item" onmouseenter="openModal('3-Triangulaciones')" onmouseleave="closeModal()">📁 3-Triangulaciones</div>
-      <div class="toc-item" onmouseenter="openModal('4-Teoria_Ehrhart_SageMath')" onmouseleave="closeModal()">📁 4-Teoria_Ehrhart_SageMath</div>
-      <div class="toc-item" onmouseenter="openModal('5-Topologia_Algebraica')" onmouseleave="closeModal()">📁 5-Topologia_Algebraica</div>
-      <div class="toc-item" onmouseenter="openModal('6-Geometria_Diferencial')" onmouseleave="closeModal()">📁 6-Geometria_Diferencial</div>
-      <div class="toc-item" onmouseenter="openModal('7-Funciones_Zeta')" onmouseleave="closeModal()">📁 7-Funciones_Zeta</div>
+  </header>
+
+  <section class="grid">
+    <div class="card">
+      <h2>1. Construcción de Gráficos</h2>
+      <p>Scripts y ejemplos para visualizar estructuras poligonales y funciones discretas.</p>
+      <button onclick="location.href='#'">Ver más</button>
     </div>
-  </div>
 
-  <div class="modal" id="modal">
-    <h2 id="modal-title">Título</h2>
-    <p id="modal-content">Aquí va el contenido flotante sobre esa carpeta.</p>
-  </div>
+    <div class="card">
+      <h2>2. Envolvente Convexa</h2>
+      <p>Análisis visual y computacional de la envolvente convexa sobre puntos racionales.</p>
+      <button onclick="location.href='#'">Ver más</button>
+    </div>
 
-  <script>
-    const modal = document.getElementById('modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalContent = document.getElementById('modal-content');
+    <div class="card">
+      <h2>3. Triangulaciones</h2>
+      <p>Algoritmos de subdivisión de poliedros en triángulos, con utilidad para Ehrhart.</p>
+      <button onclick="location.href='#'">Ver más</button>
+    </div>
 
-    const contentMap = {
-      "1-Construccion_Graficos": {
-        title: "1. Construcción de Gráficos",
-        text: "Contiene scripts y ejemplos para generar gráficos que visualizan estructuras poligonales y funciones discretas."
-      },
-      "2-Envolvente_Convexa": {
-        title: "2. Envolvente Convexa",
-        text: "Análisis geométrico y visual de la envolvente convexa, con experimentos computacionales sobre puntos en el plano."
-      },
-      "3-Triangulaciones": {
-        title: "3. Triangulaciones",
-        text: "Incluye algoritmos de triangulación y su relación con el conteo de puntos enteros en poliedros."
-      },
-      "4-Teoria_Ehrhart_SageMath": {
-        title: "4. Teoría de Ehrhart con SageMath",
-        text: "Materiales interactivos y notebooks en SageMath para explorar funciones de Ehrhart y sus propiedades."
-      },
-      "5-Topologia_Algebraica": {
-        title: "5. Topología Algebraica",
-        text: "Notas, diagramas y herramientas relacionadas con homología y su uso en la teoría geométrica discreta."
-      },
-      "6-Geometria_Diferencial": {
-        title: "6. Geometría Diferencial",
-        text: "Exploración de conceptos diferenciales aplicados a estructuras poligonales y funciones relacionadas."
-      },
-      "7-Funciones_Zeta": {
-        title: "7. Funciones Zeta",
-        text: "Estudio analítico de funciones zeta asociadas a poliedros, incluyendo aspectos numéricos y visuales."
-      }
-    };
+    <div class="card">
+      <h2>4. Teoría de Ehrhart con SageMath</h2>
+      <p>Notebooks y ejemplos prácticos con Sage para estudiar funciones de Ehrhart.</p>
+      <button onclick="location.href='#'">Ver más</button>
+    </div>
 
-    function openModal(id) {
-      modalTitle.innerText = contentMap[id].title;
-      modalContent.innerText = contentMap[id].text;
-      modal.style.display = 'block';
-    }
+    <div class="card">
+      <h2>5. Topología Algebraica</h2>
+      <p>Herramientas de homología y cohomología aplicadas a objetos geométricos.</p>
+      <button onclick="location.href='#'">Ver más</button>
+    </div>
 
-    function closeModal() {
-      modal.style.display = 'none';
-    }
-  </script>
+    <div class="card">
+      <h2>6. Geometría Diferencial</h2>
+      <p>Aplicación de derivadas y estructuras diferenciales en contextos discretos.</p>
+      <button onclick="location.href='#'">Ver más</button>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script>
-    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js@master/demo/particles.json');
-  </script>
+    <div class="card">
+      <h2>7. Funciones Zeta</h2>
+      <p>Exploración analítica de funciones zeta asociadas a poliedros y conteos racionales.</p>
+      <button onclick="location.href='#'">Ver más</button>
+    </div>
+  </section>
 </body>
 </html>
