@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #111;
+      background-color: #0a0a0a;
       color: white;
       overflow-x: hidden;
       position: relative;
@@ -23,14 +23,32 @@
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      opacity: 0.08; /* Controla qué tanto se ven */
+      opacity: 0.06; /* Ajusta la intensidad del fondo */
       background-image:
-        url('https://www.nan.ma/star/static/media/polytope_5_3_52_layers_3_3.67dd6eb1.gif'),
-        url('https://www.nan.ma/star/static/media/polytope_3_3_52_diff_shapes_layers_1_8.dcf4cac8.gif'),
-        url('https://robertlovespi.net/wp-content/uploads/2013/04/6-ex-600-cell-hexacosichoron1.gif');
-      background-repeat: no-repeat, no-repeat, no-repeat;
-      background-position: top left, center center, bottom right;
-      background-size: 250px, 300px, 250px;
+        url('https://robertlovespi.net/wp-content/uploads/2013/04/6-ex-600-cell-hexacosichoron1.gif'),
+        url('https://upload.wikimedia.org/wikipedia/commons/1/13/Hypertorus.gif'),
+        url('https://i.gifer.com/BF2f.gif'),
+        url('https://scx2.b-cdn.net/gfx/news/2015/researcherbu.gif'),
+        url('https://i.gifer.com/origin/20/20d6c5793393c2f53632f875a48f92f8_w200.gif'),
+        url('https://en.m.wikipedia.org/wiki/File:600-cell.gif'),
+        url('https://media.tenor.com/images/5d0c66343783de43c5762a56d268993d/tenor.gif');
+      background-repeat: no-repeat;
+      background-position:
+        top left,
+        top right,
+        center left,
+        center right,
+        bottom left,
+        bottom right,
+        center center;
+      background-size:
+        180px,
+        200px,
+        220px,
+        220px,
+        180px,
+        200px,
+        240px;
       background-attachment: fixed;
     }
 
@@ -43,6 +61,7 @@
       font-size: 3rem;
       margin: 0;
       font-weight: 300;
+      color: #ffffff;
     }
 
     .grid {
@@ -55,7 +74,7 @@
     }
 
     .card {
-      background: rgba(28, 28, 28, 0.85);
+      background: rgba(28, 28, 28, 0.9);
       border-radius: 16px;
       padding: 2rem;
       transition: all 0.3s ease;
@@ -63,12 +82,13 @@
       flex-direction: column;
       justify-content: space-between;
       backdrop-filter: blur(5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
 
     .card:hover {
       background: rgba(40, 40, 40, 0.95);
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+      box-shadow: 0 12px 28px rgba(255, 255, 255, 0.05);
     }
 
     .card h2 {
@@ -96,6 +116,12 @@
 
     .card button:hover {
       background: #ddd;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
