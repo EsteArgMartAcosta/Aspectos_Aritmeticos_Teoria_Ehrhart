@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Construcción de Gráficos</title>
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -27,11 +28,11 @@
 
     a { color: #4ea8ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    h1, h2 { 
-      font-weight: 400; 
-      border-bottom: 1px solid #444; 
-      padding-bottom: 0.5rem; 
-      margin-top: 2rem; 
+    h1, h2 {
+      font-weight: 400;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
     }
     pre {
       background: #222;
@@ -93,62 +94,54 @@
     </div>
   </section>
 
-  <!-- Ejemplo de código -->
+  <!-- Ejemplo de código + Icosaedro interactivo -->
   <section>
     <h2>Ejemplo de código</h2>
     <div class="code-section">
-      <pre><code># Ejemplo básico de cálculo de envolvente convexa en Python
+      <pre><code># Cálculo de la envolvente convexa en Python
 import numpy as np
 from scipy.spatial import ConvexHull
 
 points = np.random.rand(30, 2)
 hull = ConvexHull(points)
 
-print("Vertices del polígono convex hull:")
+print("Vértices del convex hull:")
 print(hull.vertices)
-</code></pre>
+      </code></pre>
     </div>
-</section>
 
-  
-
-
-  
-
-  <!-- Icosaedro interactivo -->
-<section>
+    <!-- Contenedor para el gráfico Plotly -->
+    <div id="icosaedro-plot" style="width:100%; height:500px; margin-top:1.5rem;"></div>
     <script>
-      window.PLOTLYENV = window.PLOTLYENV || {};
       Plotly.newPlot(
-        "f8953891-bd2c-4ff5-b4a1-4d71a1f23ceb",
+        'icosaedro-plot',
         [{
           type: "mesh3d",
-          x: [-0.5257, 0.5257, -0.5257, 0.5257, 0, 0, 0, 0, 0.8507, 0.8507, -0.8507, -0.8507],
-          y: [0.8507, 0.8507, -0.8507, -0.8507, -0.5257, 0.5257, -0.5257, 0.5257, 0, 0, 0, 0],
-          z: [0, 0, 0, 0, 0.8507, 0.8507, -0.8507, -0.8507, -0.5257, 0.5257, -0.5257, 0.5257],
+          x: [-0.5257,0.5257,-0.5257,0.5257,0,0,0,0,0.8507,0.8507,-0.8507,-0.8507],
+          y: [0.8507,0.8507,-0.8507,-0.8507,-0.5257,0.5257,-0.5257,0.5257,0,0,0,0],
+          z: [0,0,0,0,0.8507,0.8507,-0.8507,-0.8507,-0.5257,0.5257,-0.5257,0.5257],
           i: [0,0,0,0,0,1,5,11,10,7,3,3,3,3,3,4,2,6,8,9],
           j: [11,5,1,7,10,5,11,10,7,1,9,4,2,6,8,9,4,2,6,8],
           k: [5,1,7,10,11,9,4,2,6,8,4,2,6,8,9,5,11,10,7,1],
           opacity: 0.8,
           flatshading: true,
-          colorscale: [[0, "#440154"], [1, "#fde725"]],
+          colorscale: [[0,"#440154"],[1,"#fde725"]],
           showscale: false,
-          lighting: { ambient: 0.6, diffuse: 0.6, roughness: 0.9, specular: 0.5 },
-          lightposition: { x: 100, y: 200, z: 0 }
+          lighting: { ambient:0.6, diffuse:0.6, roughness:0.9, specular:0.5 },
+          lightposition: { x:100, y:200, z:0 }
         }],
         {
-          margin: { l:0, r:0, b:0, t:0 },
+          margin:{ l:0, r:0, b:0, t:0 },
           paper_bgcolor: "black",
           scene: {
             aspectmode: "data",
-            camera: { eye: { x:1.5, y:1.5, z:1.5 } },
-            xaxis: { visible:false },
-            yaxis: { visible:false },
-            zaxis: { visible:false }
+            camera:{ eye:{ x:1.5, y:1.5, z:1.5 } },
+            xaxis:{ visible:false },
+            yaxis:{ visible:false },
+            zaxis:{ visible:false }
           },
-          template: "plotly_dark"
-        },
-        { responsive: true }
+          template:"plotly_dark"
+        }
       );
     </script>
   </section>
@@ -162,6 +155,5 @@ print(hull.vertices)
       Abrir notebook en Colab
     </a>
   </section>
-
 </body>
 </html>
