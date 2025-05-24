@@ -96,17 +96,26 @@
 
   <!-- Ejemplo de código + Icosaedro interactivo -->
   <section>
-    <h2>Ejemplo de código</h2>
+    <h2>Código Icosaedro</h2>
     <div class="code-section">
-      <pre><code># Cálculo de la envolvente convexa en Python
-import numpy as np
-from scipy.spatial import ConvexHull
+      <pre><code>
+import numpy as np, plotly.graph_objects as go
+from IPython.display import HTML
 
-points = np.random.rand(30, 2)
-hull = ConvexHull(points)
+verts=np.array([ [x,y,z] for x,y,z in [(-1,phi,0),(1,phi,0),(-1,-phi,0),(1,-phi,0),(0,-1,phi),(0,1,phi),(0,-1,-phi),(0,1,-phi),(phi,0,-1),(phi,0,1),(-phi,0,-1),(-phi,0,1)] ])/np.linalg.norm([ -1,phi,0 ])
+i,j,k=zip(*faces)
 
-print("Vértices del convex hull:")
-print(hull.vertices)
+
+fig=go.Figure(go.Mesh3d(
+    x=verts[:,0],y=verts[:,1],z=verts[:,2],i=i,j=j,k=k,
+    opacity=.8,colorscale='Viridis',intensity=verts[:,2],flatshading=True,showscale=False,
+    lighting=dict(ambient=.6,diffuse=.6,roughness=.9,specular=.5),lightposition=dict(x=100,y=200,z=0)
+))
+fig.update_layout(
+    scene=dict(xaxis_visible=False,yaxis_visible=False,zaxis_visible=False,aspectmode='data',camera_eye=dict(x=1.5,y=1.5,z=1.5)),
+    margin=dict(l=0,r=0,b=0,t=0),paper_bgcolor='black',template='plotly_dark'
+)
+fig.show()
       </code></pre>
     </div>
 
