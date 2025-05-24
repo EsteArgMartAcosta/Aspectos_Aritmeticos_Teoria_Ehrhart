@@ -119,12 +119,53 @@
   <img id="gif-bottom-left" src="https://i.pinimg.com/originals/1f/ce/82/1fce82cdace04ac469160cbbe594f58c.gif" alt="GIF esquina inferior izquierda" />
   <img id="gif-bottom-right" src="https://i.makeagif.com/media/2-27-2018/xxu5uk.gif" alt="GIF esquina inferior derecha" />
 
-  <h1>Envolvente Convexa</h1>
-  
-  <section>
-    <p>Esta sección explora el análisis geométrico y visual de la envolvente convexa con ejemplos y cálculos computacionales.</p>
-  </section>
+  <section id="envolvente-convexa" style="margin: 2rem 0;">
 
+  <h3 style="font-size: 1.6rem; color: #fff; border-bottom: 1px solid #444; padding-bottom: 0.5rem; margin-top: 1.5rem;">
+    Envolvente Convexa: Graham Scan y Quickhull
+  </h3>
+  <div style="text-align: justify; color: #ddd; line-height: 1.6; margin-top: 0.5rem;">
+    <p>
+      La envolvente convexa de un conjunto de puntos en el plano es la frontera poligonal más pequeña que encierra todos los vértices, definiendo así el “contorno” del conjunto. En esta sección se exploran dos estrategias para construir dicho contorno de manera dinámica, ilustrando cada paso mediante animaciones que muestran cómo se incorporan o descartan puntos hasta completar la frontera.
+    </p>
+    <p>
+      <strong>Graham Scan:</strong>  
+      Se parte de un pivote (el punto de coordenada mínima en y) y se ordena el resto según su ángulo polar respecto a él. A medida que se recorre esta lista, se mantiene una pila de vértices que definen el contorno parcial. Cada nuevo punto es comparado con los dos últimos de la pila mediante un test de orientación; si forma un giro “hacia dentro”, el vértice intermedio es desapilado, garantizando que la frontera permanezca convexa.
+    </p>
+    <p>
+      <strong>Quickhull:</strong>  
+      Se identifican dos puntos extremos (el de mínima x y el de máxima x) y se traza el segmento que los une, dividiendo el conjunto en los situados “por encima” y “por debajo” de esa línea. Para cada subconjunto, se selecciona el punto más alejado de la base como nuevo vértice de la envolvente y se generan dos subproblemas recursivos sobre los triángulos formados, hasta cerrar el polígono.
+    </p>
+    <p>
+      En la visualización, los barridos angulares de Graham Scan y las divisiones recursivas de Quickhull se muestran en tiempo real, de manera que la envolvente crece de forma clara y contrastante, permitiendo comparar ambos enfoques de construcción de la frontera convexa.
+    </p>
+  </div>
+</section>
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   <section>
     <h2>Ejemplo de código</h2>
     <div class="code-section">
