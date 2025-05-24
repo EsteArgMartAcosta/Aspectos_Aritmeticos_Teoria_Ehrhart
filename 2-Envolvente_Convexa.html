@@ -128,14 +128,10 @@
     <p>
       La envolvente convexa de un conjunto de puntos en el plano es la frontera poligonal más pequeña que encierra todos los vértices, definiendo así el contorno del conjunto. En esta sección se exploran dos estrategias para construir dicho contorno de manera dinámica, ilustrando cada paso mediante animaciones que muestran cómo se incorporan o descartan puntos hasta completar la frontera.
     </p>
-    <p>
-      <strong>Graham Scan:</strong>  
-      Se parte de un pivote (el punto de coordenada mínima en y) y se ordena el resto según su ángulo polar respecto a él. A medida que se recorre esta lista, se mantiene una pila de vértices que definen el contorno parcial. Cada nuevo punto es comparado con los dos últimos de la pila mediante un test de orientación; si forma un giro hacia dentro, el vértice intermedio es desapilado, garantizando que la frontera permanezca convexa.
-    </p>
-    <p>
-      <strong>Quickhull:</strong>  
-      Se identifican dos puntos extremos (el de mínima x y el de máxima x) y se traza el segmento que los une, dividiendo el conjunto en los situados por encima y por debajo de esa línea. Para cada subconjunto, se selecciona el punto más alejado de la base como nuevo vértice de la envolvente y se generan dos subproblemas recursivos sobre los triángulos formados, hasta cerrar el polígono.
-    </p>   
+    <ul style="margin-left:1.5rem; list-style-type:disc;">
+      <li><strong>Graham Scan:</strong> Se parte de un pivote (el punto de coordenada mínima en y) y se ordena el resto según su ángulo polar respecto a él. A medida que se recorre esta lista, se mantiene una pila de vértices que definen el contorno parcial. Cada nuevo punto es comparado con los dos últimos de la pila mediante un test de orientación; si forma un giro hacia dentro, el vértice intermedio es desapilado, garantizando que la frontera permanezca convexa.</li>
+      <li><strong>Quickhull:</strong> Se identifican dos puntos extremos (el de mínima x y el de máxima x) y se traza el segmento que los une, dividiendo el conjunto en los situados por encima y por debajo de esa línea. Para cada subconjunto, se selecciona el punto más alejado de la base como nuevo vértice de la envolvente y se generan dos subproblemas recursivos sobre los triángulos formados, hasta cerrar el polígono.</li>
+    </ul>
   </div>
 </section>
   
