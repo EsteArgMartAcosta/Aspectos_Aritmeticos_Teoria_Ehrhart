@@ -137,68 +137,91 @@
   
 
 
+<!-- Añádelo en tu <head> -->
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+<!-- En la sección donde quieras la animación -->
+<section style="margin:3rem 0;">
+  <div id="convex-hull-anim" style="width:100%;height:600px;"></div>
+</section>
+
+<script>
+// === Parámetros y generación de puntos ===
+const N = 200;
+const pts = Array.from({length: N}, () => [Math.floor(Math.random()*200), Math.floor(Math.random()*200)]);
+// ordenamos lexicográficamente
+pts.sort((a,b) => a[0] - b[0] || a[1] - b[1]);
+
+// === Función auxiliar cross ===
+function cross(o, a, b) {
+  return (a[0]-o[0])*(b[1]-o[1]) - (a[1]-o[1])*(b[0]-o[0]);
+}
+
+// === Construcción incremental de la envolvente ===
+function incrementalHull(points) {
+  let lower = [], upper = [], steps = [];
+  for (let p of points) {
+    lower.push(p);
+    while (lower.length >= 3 && cross(lower[lower.length-3], lower[lower.length-2], lower[lower.length-1]) <= 0) {
+      lower.splice(lower.length-2,1);
+    }
+    steps.push(lower.slice());
+  }
+  for (let p of points.slice().reverse()) {
+    upper.push(p);
+    while (upper.length >= 3 && cross(upper[upper.length-3], upper[upper.length-2], upper[upper.length-1]) <= 0) {
+      upper.splice(upper.length-2,1);
+    }
+    steps.push(lower.concat(upper.slice(1,-1)));
+  }
+  return steps;
+}
+
+const hullSteps = incrementalHull(pts);
+
+// === Construcción de frames para Plotly ===
+const frames = hullSteps.map(hull => {
+  // cerramos el polígono
+  const hx = hull.map(p=>p[0]).concat(hull.length? [hull[0][0]]:[]);
+  const hy = hull.map(p=>p[1]).concat(hull.length? [hull[0][1]]:[]);
+  return {
+    name: String(Math.random()),
+    data: [
+      { x: pts.map(p=>p[0]), y: pts.map(p=>p[1]), mode:'markers',
+        marker:{size:6,color:'#4ea8ff'}, name:'Puntos' },
+      { x: hx, y: hy, mode:'lines+markers',
+        line:{width:2,color:'#fde725'},
+        marker:{size:5,color:'#fde725'}, name:'Hull' }
+    ]
+  };
+});
+
+// === Plot inicial y animación ===
+Plotly.newPlot('convex-hull-anim', frames[0].data, {
+  margin:{l:0,r:0,b:0,t:0},
+  paper_bgcolor:'black', plot_bgcolor:'black',
+  xaxis:{visible:false}, yaxis:{visible:false},
+  template:'plotly_dark',
+  updatemenus:[{
+    type:'buttons', showactive:false,
+    x:1.1, y:1, xanchor:'right', yanchor:'top',
+    buttons:[{
+      label:'▶ Play',
+      method:'animate',
+      args:[null, {
+        frame:{duration:100, redraw:true},
+        fromcurrent:true, mode:'immediate'
+      }]
+    }]
+  }]
+}, {
+  frames: frames,
+  responsive:true
+});
+</script>
 
 
   
-  <section>
-    <h2>Ejemplo de código</h2>
-    <div class="code-section">
-      <pre><code># Ejemplo básico de cálculo de envolvente convexa en Python
-import numpy as np
-from scipy.spatial import ConvexHull
-
-points = np.random.rand(30, 2)
-hull = ConvexHull(points)
-
-print("Vertices del polígono convex hull:")
-print(hull.vertices)
-</code></pre>
-    </div>
-  </section>
-
-
-
-<!-- Envolvente Convexa Dinámica Avanzada -->
-<div>
-  <h1 style="text-align:center; color:#FFD700; font-family:Arial, sans-serif;">
-    Envolvente Convexa Dinámica Avanzada
-  </h1>
-  <!-- Plotly figure -->
-  <!-- Pega a continuación el siguiente bloque generado: -->
-  <div id="83c2d6f0-55f0-4077-b5e7-1757cb884e23" style="width:100%;height:600px;"></div>
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-  <script>
-    (function(){
-      // Datos y frames incorporados
-      var plotData = [{"marker":{"color":["#4ea8ff"],"size":6},"mode":"markers","name":"Puntos","type":"scatter","x":[/* ...200 valores X...*/],"y":[/* ...200 valores Y...*/]}];
-      var frames = [/* ...más de 200 frames con líneas y marcadores del hull...*/];
-
-      Plotly.newPlot("83c2d6f0-55f0-4077-b5e7-1757cb884e23",
-        plotData,
-        {
-          updatemenus:[{
-            type:"buttons", showactive:false,
-            x:1.15, y:1, xanchor:"right", yanchor:"top",
-            buttons:[{
-              label:"▶ Play",
-              method:"animate",
-              args:[null, {frame:{duration:100,redraw:true},
-                           fromcurrent:true,mode:"immediate"}]
-            }]
-          }],
-          margin:{l:0,r:0,b:0,t:0},
-          paper_bgcolor:"black", plot_bgcolor:"black",
-          xaxis:{visible:false}, yaxis:{visible:false},
-          template:"plotly_dark", height:600
-        },
-        {frames:frames, responsive:true}
-      );
-    })();
-  </script>
-
-
-
-
   
 
 
