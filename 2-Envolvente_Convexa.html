@@ -137,10 +137,6 @@
   
 
 
-<!-- En tu <head>, si no lo has hecho aún -->
-<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-
-<!-- En el <body>, donde quieras la animación -->
 <section style="margin:3rem 0;">
   <div id="convex-hull-anim" style="width:100%; height:600px;"></div>
 </section>
@@ -154,12 +150,12 @@ const pts = Array.from({length: N}, () => [
 ]);
 pts.sort((a,b) => a[0] - b[0] || a[1] - b[1]);
 
-// 2) Función cross para el test de orientación
+// 2) Función cross para orientación
 function cross(o, a, b) {
   return (a[0]-o[0])*(b[1]-o[1]) - (a[1]-o[1])*(b[0]-o[0]);
 }
 
-// 3) Algoritmo incremental que va guardando cada paso en un array
+// 3) Algoritmo incremental, guardando cada paso
 function incrementalHull(points) {
   let lower = [], upper = [], steps = [];
   for (let p of points) {
@@ -180,7 +176,7 @@ function incrementalHull(points) {
 }
 const hullSteps = incrementalHull(pts);
 
-// 4) Creamos un frame por cada paso
+// 4) Construimos los frames
 const frames = hullSteps.map((hull,i) => {
   const hx = hull.map(p=>p[0]).concat(hull.length?[hull[0][0]]:[]);
   const hy = hull.map(p=>p[1]).concat(hull.length?[hull[0][1]]:[]);
@@ -196,7 +192,7 @@ const frames = hullSteps.map((hull,i) => {
   };
 });
 
-// 5) Configuramos layout con el botón a la izquierda
+// 5) Layout con botón a la izquierda
 const layout = {
   margin:{l:0,r:0,b:0,t:0},
   paper_bgcolor:'black', plot_bgcolor:'black',
@@ -204,9 +200,7 @@ const layout = {
   template:'plotly_dark',
   updatemenus:[{
     type:'buttons', showactive:false,
-    x:0,     // posición horizontal: 0 = izquierda
-    y:1,     // arriba
-    xanchor:'left', yanchor:'top',
+    x:0, y:1, xanchor:'left', yanchor:'top',
     buttons:[{
       label:'▶ Play',
       method:'animate',
@@ -218,14 +212,17 @@ const layout = {
   }]
 };
 
-// 6) Dibujamos y pasamos frames en el config
+// 6) Dibujamos y añadimos frames
 Plotly.newPlot(
   'convex-hull-anim',
   frames[0].data,
   layout,
-  {frames: frames, responsive: true}
-);
+  {responsive:true}
+).then(() => {
+  Plotly.addFrames('convex-hull-anim', frames);
+});
 </script>
+
 
 
 
