@@ -27,51 +27,73 @@
 
     a { color: #4ea8ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    h1, h2 { font-weight: 400; border-bottom: 1px solid #444; padding-bottom: 0.5rem; margin-top: 2rem; }
-    pre {
-      background: #222; padding: 1rem; overflow-x: auto;
-      border-radius: 6px; font-family: Consolas, 'Courier New', monospace;
-      font-size: 0.9rem; color: #d1d1d1; margin-top: 1rem;
+    h1, h2 { 
+      font-weight: 400; 
+      border-bottom: 1px solid #444; 
+      padding-bottom: 0.5rem; 
+      margin-top: 2rem; 
     }
-    .code-section { margin-top: 1rem; border-left: 4px solid #4ea8ff; padding-left: 1rem; }
+    pre {
+      background: #222;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #d1d1d1;
+      margin-top: 1rem;
+    }
+    .code-section {
+      margin-top: 1rem;
+      border-left: 4px solid #4ea8ff;
+      padding-left: 1rem;
+    }
     .notebook-link {
-      margin-top: 1rem; display: inline-block; background: #4ea8ff;
-      color: white; padding: 0.5rem 1rem; border-radius: 6px;
-      text-decoration: none; font-weight: 600; transition: background 0.3s ease;
+      margin-top: 1rem;
+      display: inline-block;
+      background: #4ea8ff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
     }
     .notebook-link:hover { background: #367acc; }
     nav { margin-bottom: 2rem; }
   </style>
 
   <!-- Carga Plotly una sola vez -->
-  <script type="text/javascript" src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 </head>
 <body>
   <nav>
     <a href="index.html">← Volver a la página principal</a>
   </nav>
 
-  <!-- GIFs -->
+  <!-- GIFs en las esquinas -->
   <img id="gif-top-left" src="https://i.pinimg.com/originals/a7/be/b7/a7beb7f8a8f090b3f7c857543c6e2f72.gif" alt="" />
   <img id="gif-top-right" src="https://45.media.tumblr.com/6785bae27b8f888fe825f0ade95796a3/tumblr_noenkbeTSw1qjmwryo1_500.gif" alt="" />
   <img id="gif-bottom-left" src="https://giffiles.alphacoders.com/787/7879.gif" alt="" />
   <img id="gif-bottom-right" src="https://i.makeagif.com/media/11-21-2017/pf54Ek.gif" alt="" />
 
+  <!-- Sección Construcción de Gráficos -->
   <section id="construccion-graficos" style="margin: 2rem 0;">
-    <h2 style="font-size: 1.8rem; color: #fff;">Construcción de Gráficos</h2>
+    <h2 style="font-size:1.8rem; color:#fff;">Construcción de Gráficos</h2>
     <div style="text-align: justify; color: #ddd; line-height: 1.6;">
       <p>
         En esta página se reúnen varias de las figuras estáticas que acompañan al cuerpo de la tesis, elaboradas para documentar y clarificar los procesos geométricos esenciales que respaldan los resultados teóricos:
       </p>
-      <ul style="margin-left: 1.5rem; list-style-type: disc;">
+      <ul style="margin-left:1.5rem; list-style-type:disc;">
         <li><strong>Envolventes convexas</strong> sobre conjuntos de puntos en el plano, mostrando el polígono mínimo que engloba todos los vértices y facilitando el análisis de sus propiedades métricas.</li>
         <li><strong>Hiperplanos</strong> utilizados para definir las caras de los p-politopos, estableciendo de manera precisa los límites de cada región en el espacio.</li>
         <li><strong>Triángulos</strong> diseñados específicamente para demostrar el Teorema de Pick, ilustrando la relación entre el área, los puntos interiores y los puntos en la frontera.</li>
-        <li><strong>Politopos</strong> representados en 2D y 3D, con vistas en alzado y perspectiva, que permiten ver su estructura (vértices, aristas y caras) y cómo cambian al rotarlos.</li>
+        <li><strong>Politopos</strong> representados en 2D, con vistas en alzado y perspectiva, que permiten ver su estructura (vértices, aristas y caras) y cómo cambian al rotarlos.</li>
       </ul>
     </div>
   </section>
 
+  <!-- Ejemplo de código -->
   <section>
     <h2>Ejemplo de código</h2>
     <div class="code-section">
@@ -86,6 +108,52 @@ plt.show()</code></pre>
     </div>
   </section>
 
+  <!-- Icosaedro interactivo -->
+  <section id="icosaedro-interactivo" style="margin: 2rem 0;">
+    <h2 style="font-size:1.8rem; color:#fff; border-bottom:2px solid #444; padding-bottom:0.5rem;">
+      Icosaedro Interactivo
+    </h2>
+    <div id="f8953891-bd2c-4ff5-b4a1-4d71a1f23ceb" 
+         class="plotly-graph-div" 
+         style="width:100%; height:500px;">
+    </div>
+    <script>
+      window.PLOTLYENV = window.PLOTLYENV || {};
+      Plotly.newPlot(
+        "f8953891-bd2c-4ff5-b4a1-4d71a1f23ceb",
+        [{
+          type: "mesh3d",
+          x: [-0.5257, 0.5257, -0.5257, 0.5257, 0, 0, 0, 0, 0.8507, 0.8507, -0.8507, -0.8507],
+          y: [0.8507, 0.8507, -0.8507, -0.8507, -0.5257, 0.5257, -0.5257, 0.5257, 0, 0, 0, 0],
+          z: [0, 0, 0, 0, 0.8507, 0.8507, -0.8507, -0.8507, -0.5257, 0.5257, -0.5257, 0.5257],
+          i: [0,0,0,0,0,1,5,11,10,7,3,3,3,3,3,4,2,6,8,9],
+          j: [11,5,1,7,10,5,11,10,7,1,9,4,2,6,8,9,4,2,6,8],
+          k: [5,1,7,10,11,9,4,2,6,8,4,2,6,8,9,5,11,10,7,1],
+          opacity: 0.8,
+          flatshading: true,
+          colorscale: [[0, "#440154"], [1, "#fde725"]],
+          showscale: false,
+          lighting: { ambient: 0.6, diffuse: 0.6, roughness: 0.9, specular: 0.5 },
+          lightposition: { x: 100, y: 200, z: 0 }
+        }],
+        {
+          margin: { l:0, r:0, b:0, t:0 },
+          paper_bgcolor: "black",
+          scene: {
+            aspectmode: "data",
+            camera: { eye: { x:1.5, y:1.5, z:1.5 } },
+            xaxis: { visible:false },
+            yaxis: { visible:false },
+            zaxis: { visible:false }
+          },
+          template: "plotly_dark"
+        },
+        { responsive: true }
+      );
+    </script>
+  </section>
+
+  <!-- Notebook Colab -->
   <section>
     <h2>Notebook Colab</h2>
     <a class="notebook-link"
@@ -93,54 +161,6 @@ plt.show()</code></pre>
        target="_blank" rel="noopener noreferrer">
       Abrir notebook en Colab
     </a>
-  </section>
-
-  <!-- Sección interactiva del Icosaedro -->
-  <section id="icosaedro-interactivo" style="margin: 2rem 0;">
-    <h2 style="font-size:1.8rem; color:#fff; border-bottom:2px solid #444; padding-bottom:0.5rem;">
-      Icosaedro Interactivo
-    </h2>
-    <div style="width:100%; height:500px;">
-      <!-- fragmento Plotly generado en Colab -->
-      <script type="text/javascript">
-        window.PLOTLYENV = window.PLOTLYENV || {};
-        Plotly.newPlot(
-          "f8953891-bd2c-4ff5-b4a1-4d71a1f23ceb",
-          [{
-            "type":"mesh3d",
-            "x":[-0.5257311121191336,0.5257311121191336,-0.5257311121191336,0.5257311121191336,0,0,0,0,0.8506508083520399,0.8506508083520399,-0.8506508083520399,-0.8506508083520399],
-            "y":[0.8506508083520399,0.8506508083520399,-0.8506508083520399,-0.8506508083520399,-0.5257311121191336,0.5257311121191336,-0.5257311121191336,0.5257311121191336,0,0,0,0],
-            "z":[0,0,0,0,0.8506508083520399,0.8506508083520399,-0.8506508083520399,-0.8506508083520399,-0.5257311121191336,0.5257311121191336,-0.5257311121191336,0.5257311121191336],
-            "i":[0,0,0,0,0,1,5,11,10,7,3,3,3,3,3,4,2,6,8,9],
-            "j":[11,5,1,7,10,5,11,10,7,1,9,4,2,6,8,9,4,2,6,8],
-            "k":[5,1,7,10,11,9,4,2,6,8,4,2,6,8,9,5,11,10,7,1],
-            "opacity":0.8,
-            "flatshading":true,
-            "colorscale":[[0,"#440154"],[1,"#fde725"]],
-            "showscale":false,
-            "lighting":{"ambient":0.6,"diffuse":0.6,"roughness":0.9,"specular":0.5},
-            "lightposition":{"x":100,"y":200,"z":0}
-          }],
-          {
-            "margin":{"l":0,"r":0,"b":0,"t":0},
-            "paper_bgcolor":"black",
-            "scene": {
-              "aspectmode":"data",
-              "camera":{"eye":{"x":1.5,"y":1.5,"z":1.5}},
-              "xaxis":{"visible":false},
-              "yaxis":{"visible":false},
-              "zaxis":{"visible":false}
-            },
-            "template":"plotly_dark"
-          },
-          {"responsive":true}
-        );
-      </script>
-      <div id="f8953891-bd2c-4ff5-b4a1-4d71a1f23ceb"
-           class="plotly-graph-div"
-           style="width:100%; height:100%;">
-      </div>
-    </div>
   </section>
 
 </body>
