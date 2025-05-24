@@ -137,27 +137,29 @@
   
 
 
-<!-- Añádelo en tu <head> -->
+<!-- En tu <head>, si no lo has hecho aún -->
 <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 
-<!-- En la sección donde quieras la animación -->
+<!-- En el <body>, donde quieras la animación -->
 <section style="margin:3rem 0;">
-  <div id="convex-hull-anim" style="width:100%;height:600px;"></div>
+  <div id="convex-hull-anim" style="width:100%; height:600px;"></div>
 </section>
 
 <script>
-// === Parámetros y generación de puntos ===
+// 1) Generamos N puntos y los ordenamos
 const N = 200;
-const pts = Array.from({length: N}, () => [Math.floor(Math.random()*200), Math.floor(Math.random()*200)]);
-// ordenamos lexicográficamente
+const pts = Array.from({length: N}, () => [
+  Math.floor(Math.random()*200),
+  Math.floor(Math.random()*200)
+]);
 pts.sort((a,b) => a[0] - b[0] || a[1] - b[1]);
 
-// === Función auxiliar cross ===
+// 2) Función cross para el test de orientación
 function cross(o, a, b) {
   return (a[0]-o[0])*(b[1]-o[1]) - (a[1]-o[1])*(b[0]-o[0]);
 }
 
-// === Construcción incremental de la envolvente ===
+// 3) Algoritmo incremental que va guardando cada paso en un array
 function incrementalHull(points) {
   let lower = [], upper = [], steps = [];
   for (let p of points) {
@@ -176,16 +178,14 @@ function incrementalHull(points) {
   }
   return steps;
 }
-
 const hullSteps = incrementalHull(pts);
 
-// === Construcción de frames para Plotly ===
-const frames = hullSteps.map(hull => {
-  // cerramos el polígono
-  const hx = hull.map(p=>p[0]).concat(hull.length? [hull[0][0]]:[]);
-  const hy = hull.map(p=>p[1]).concat(hull.length? [hull[0][1]]:[]);
+// 4) Creamos un frame por cada paso
+const frames = hullSteps.map((hull,i) => {
+  const hx = hull.map(p=>p[0]).concat(hull.length?[hull[0][0]]:[]);
+  const hy = hull.map(p=>p[1]).concat(hull.length?[hull[0][1]]:[]);
   return {
-    name: String(Math.random()),
+    name: String(i),
     data: [
       { x: pts.map(p=>p[0]), y: pts.map(p=>p[1]), mode:'markers',
         marker:{size:6,color:'#4ea8ff'}, name:'Puntos' },
@@ -196,33 +196,37 @@ const frames = hullSteps.map(hull => {
   };
 });
 
-// === Plot inicial y animación ===
-Plotly.newPlot('convex-hull-anim', frames[0].data, {
+// 5) Configuramos layout con el botón a la izquierda
+const layout = {
   margin:{l:0,r:0,b:0,t:0},
   paper_bgcolor:'black', plot_bgcolor:'black',
   xaxis:{visible:false}, yaxis:{visible:false},
   template:'plotly_dark',
   updatemenus:[{
     type:'buttons', showactive:false,
-    x:1.1, y:1, xanchor:'right', yanchor:'top',
+    x:0,     // posición horizontal: 0 = izquierda
+    y:1,     // arriba
+    xanchor:'left', yanchor:'top',
     buttons:[{
       label:'▶ Play',
       method:'animate',
-      args:[null, {
-        frame:{duration:100, redraw:true},
+      args:[null,{
+        frame:{duration:100,redraw:true},
         fromcurrent:true, mode:'immediate'
       }]
     }]
   }]
-}, {
-  frames: frames,
-  responsive:true
-});
+};
+
+// 6) Dibujamos y pasamos frames en el config
+Plotly.newPlot(
+  'convex-hull-anim',
+  frames[0].data,
+  layout,
+  {frames: frames, responsive: true}
+);
 </script>
 
-
-  
-  
 
 
 
