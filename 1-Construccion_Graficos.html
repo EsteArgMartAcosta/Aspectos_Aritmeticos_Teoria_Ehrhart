@@ -191,6 +191,14 @@ fig.show()
           template:"plotly_dark"
         }
       );
+
+      function copyCode(btn){
+        const code=btn.nextElementSibling.innerText;
+        navigator.clipboard.writeText(code);
+        btn.textContent='✅';
+        setTimeout(()=>btn.textContent='📋',1500);
+      }
+      
     </script>
   </section>
 
