@@ -4,104 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Envolvente Convexa</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #111;
-      color: #eee;
-      margin: 0 auto;
-      max-width: 900px;
-      padding: 1rem 2rem;
-      line-height: 1.6;
-      position: relative;
-      overflow-x: hidden;
-    }
-    /* GIFs en las esquinas */
-    #gif-top-left, #gif-top-right, #gif-bottom-left, #gif-bottom-right {
-      position: fixed; width: 250px; opacity: 0.07; z-index: -1; pointer-events: none;
-    }
-    #gif-top-left { top: 0; left: 0; }
-    #gif-top-right { top: 0; right: 0; }
-    #gif-bottom-left { bottom: 0; left: 0; }
-    #gif-bottom-right { bottom: 0; right: 0; }
-    a { color: #4ea8ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    h1, h2, h3 { font-weight: 400; border-bottom: 1px solid #444; padding-bottom: 0.5rem; margin-top: 2rem; }
-    pre {
-      background: #222; padding: 1rem; overflow-x: auto; border-radius: 6px;
-      font-family: Consolas, 'Courier New', monospace; font-size: 0.9rem; color: #d1d1d1;
-      margin-top: 1rem;
-    }
-    .code-section { margin-top: 1rem; border-left: 4px solid #4ea8ff; padding-left: 1rem; position: relative; background: #222; border-radius: 6px; }
-    .code-section .copy-btn {
-      position: absolute; top: 8px; right: 8px; background: transparent; border: none; color: #ccc; font-size: 1rem; cursor: pointer;
-    }
-    .notebook-link {
-      margin-top: 1rem; display: inline-block; background: #4ea8ff; color: white;
-      padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600;
-      transition: background 0.3s ease;
-    }
-    .notebook-link:hover { background: #367acc; }
-    nav { margin-bottom: 2rem; }
-  </style>
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-</head>
-<body>
-  <nav>
-    <a href="index.html">← Volver a la página principal</a>
-  </nav>
-
-  <!-- GIFs en las esquinas -->
-  <img id="gif-top-left"   src="https://phoneky.co.uk/thumbs/screensavers/down/abstract/abstracto_h10If0AI.gif" alt="" />
-  <img id="gif-top-right"  src="https://i.pinimg.com/originals/00/f0/0e/00f00e72d99f9afc4990a4f0f47bc3af.gif" alt="" />
-  <img id="gif-bottom-left"src="https://i.pinimg.com/originals/1f/ce/82/1fce82cdace04ac469160cbbe594f58c.gif" alt="" />
-  <img id="gif-bottom-right"src="https://i.makeagif.com/media/2-27-2018/xxu5uk.gif" alt="" />
-
-  <section id="envolvente-convexa" style="margin: 2rem 0;">
-    <h3 style="font-size: 1.6rem; color: #fff; margin-top: 1.5rem;">Envolvente Convexa</h3>
-    <div style="text-align: justify; color: #ddd; line-height: 1.6; margin-top: 0.5rem;">
-      <p>
-        La envolvente convexa de un conjunto de puntos en el plano es la frontera poligonal más pequeña que encierra todos los vértices, definiendo así el contorno del conjunto. En esta sección se exploran dos estrategias para construir dicho contorno de manera dinámica, ilustrando cada paso mediante animaciones que muestran cómo se incorporan o descartan puntos hasta completar la frontera.
-      </p>
-      <ul style="margin-left:1.5rem; list-style-type:disc;">
-        <li><strong>Graham Scan:</strong> Se parte de un pivote (el punto de coordenada mínima en y) y se ordena el resto según su ángulo polar respecto a él. A medida que se recorre esta lista, se mantiene una pila de vértices que definen el contorno parcial. Cada nuevo punto es comparado con los dos últimos de la pila mediante un test de orientación; si forma un giro hacia dentro, el vértice intermedio es desapilado, garantizando que la frontera permanezca convexa.</li>
-        <li><strong>Quickhull:</strong> Se identifican dos puntos extremos (el de mínima x y el de máxima x) y se traza el segmento que los une, dividiendo el conjunto en los situados por encima y por debajo de esa línea. Para cada subconjunto, se selecciona el punto más alejado de la base como nuevo vértice de la envolvente y se generan dos subproblemas recursivos sobre los triángulos formados, hasta cerrar el polígono.</li>
-      </ul>
-    </div>
-
-    <!-- Bloque de Python con botón copiar -->
-    <div class="code-section">
-      <button class="copy-btn" onclick="copyCode(this)" title="Copiar código">📋</button>
-      <pre><code class="language-python">
-import numpy as np
-import plotly.graph_objects as go
-from IPython.display import HTML
-
-HTML('''
-<h1 style="text-align:center; color:#FFD700; font-family:Arial, sans-serif;">
-    Envolvente Convexa Dinámica Avanzada
-</h1>
-''')
-
-np.random.seed(42)
-pts = np.random.randint(0, 200, size=(200, 2))
-pts_sorted = pts[np.lexsort((pts[:,1], pts[:,0]))]
-
-def incremental_hull(points):
-    def cross(o, a, b):
-        return (a[0]-o[0])*(b[1]-o[1]) - (a[1]-o[1])*(b[0]-o[0])
-    lower, upper, steps = [], [], []
-    for p in points:
-        lower.append(p.tolist())
-        while len(lower)>=3 and cross(lower[-3], lower[-2], lower[-1])<=0:
-            lower.pop(-2)
-        steps.append(lower.copy())
-    for p in points[::-1]:<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Construcción de Gráficos</title>
 
   <!-- Prism.js: tema Tomorrow Night y soporte de Python -->
   <link
@@ -157,12 +59,30 @@ def incremental_hull(points):
       border-radius: 6px;
       font-family: Consolas, 'Courier New', monospace;
       font-size: 0.9rem;
-      margin-top: 1rem;
+      margin: 0;
     }
     .code-section {
+      position: relative;
       margin-top: 1rem;
       border-left: 4px solid #4ea8ff;
-      padding-left: 1rem;
+      padding: 1rem 1rem 1rem 1rem;
+      background: #222;
+      border-radius: 6px;
+    }
+    .code-section .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #4ea8ff;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .code-section .copy-btn:hover {
+      opacity: 1;
     }
     .notebook-link {
       margin-top: 1rem;
@@ -177,6 +97,7 @@ def incremental_hull(points):
     }
     .notebook-link:hover { background: #367acc; }
     nav { margin-bottom: 2rem; }
+
   </style>
 
   <!-- Carga Plotly una sola vez -->
@@ -188,167 +109,114 @@ def incremental_hull(points):
   </nav>
 
   <!-- GIFs en las esquinas -->
-  <img id="gif-top-left" src="https://i.pinimg.com/originals/a7/be/b7/a7beb7f8a8f090b3f7c857543c6e2f72.gif" alt="" />
-  <img id="gif-top-right" src="https://45.media.tumblr.com/6785bae27b8f888fe825f0ade95796a3/tumblr_noenkbeTSw1qjmwryo1_500.gif" alt="" />
-  <img id="gif-bottom-left" src="https://giffiles.alphacoders.com/787/7879.gif" alt="" />
-  <img id="gif-bottom-right" src="https://i.makeagif.com/media/11-21-2017/pf54Ek.gif" alt="" />
+  <img id="gif-top-left" src="https://phoneky.co.uk/thumbs/screensavers/down/abstract/abstracto_h10If0AI.gif" alt="GIF esquina superior izquierda" />
+  <img id="gif-top-right" src="https://i.pinimg.com/originals/00/f0/0e/00f00e72d99f9afc4990a4f0f47bc3af.gif" alt="GIF esquina superior derecha" />
+  <img id="gif-bottom-left" src="https://i.pinimg.com/originals/1f/ce/82/1fce82cdace04ac469160cbbe594f58c.gif" alt="GIF esquina inferior izquierda" />
+  <img id="gif-bottom-right" src="https://i.makeagif.com/media/2-27-2018/xxu5uk.gif" alt="GIF esquina inferior derecha" />
 
-  <!-- Sección Construcción de Gráficos -->
-  <section id="construccion-graficos" style="margin: 2rem 0;">
-    <h2 style="font-size:1.8rem; color:#fff;">Construcción de Gráficos</h2>
-    <div style="text-align: justify; color: #ddd; line-height: 1.6;">
-      <p>
-        En esta sección se reúnen varias de las figuras estáticas y dinámicas que acompañan al cuerpo de la tesis, elaboradas para documentar y clarificar los procesos geométricos esenciales que respaldan los resultados teóricos:
-      </p>
-      <ul style="margin-left:1.5rem; list-style-type:disc;">
-        <li><strong>Envolventes convexas</strong> sobre conjuntos de puntos en el plano, mostrando el polígono mínimo que engloba todos los vértices y facilitando el análisis de sus propiedades métricas.</li>
-        <li><strong>Hiperplanos</strong> utilizados para definir las caras de los p-politopos, estableciendo de manera precisa los límites de cada región en el espacio.</li>
-        <li><strong>Triángulos</strong> diseñados específicamente para demostrar el Teorema de Pick, ilustrando la relación entre el área, los puntos interiores y los puntos en la frontera.</li>
-        <li><strong>Politopos</strong> representados en 2D, con vistas en alzado y perspectiva, que permiten ver su estructura (vértices, aristas y caras) y cómo cambian al rotarlos.</li>
-      </ul>
-    </div>
-  </section>
+  <section id="envolvente-convexa" style="margin: 2rem 0;">
 
-  <!-- Bloque de Python -->
+  <h3 style="font-size: 1.6rem; color: #fff; border-bottom: 1px solid #444; padding-bottom: 0.5rem; margin-top: 1.5rem;">
+    Envolvente Convexa
+  </h3>
+  <div style="text-align: justify; color: #ddd; line-height: 1.6; margin-top: 0.5rem;">
+    <p>
+      La envolvente convexa de un conjunto de puntos en el plano es la frontera poligonal más pequeña que encierra todos los vértices, definiendo así el contorno del conjunto. En esta sección se exploran dos estrategias para construir dicho contorno de manera dinámica, ilustrando cada paso mediante animaciones que muestran cómo se incorporan o descartan puntos hasta completar la frontera.
+    </p>
+    <ul style="margin-left:1.5rem; list-style-type:disc;">
+      <li><strong>Graham Scan:</strong> Se parte de un pivote (el punto de coordenada mínima en y) y se ordena el resto según su ángulo polar respecto a él. A medida que se recorre esta lista, se mantiene una pila de vértices que definen el contorno parcial. Cada nuevo punto es comparado con los dos últimos de la pila mediante un test de orientación; si forma un giro hacia dentro, el vértice intermedio es desapilado, garantizando que la frontera permanezca convexa.</li>
+      <li><strong>Quickhull:</strong> Se identifican dos puntos extremos (el de mínima x y el de máxima x) y se traza el segmento que los une, dividiendo el conjunto en los situados por encima y por debajo de esa línea. Para cada subconjunto, se selecciona el punto más alejado de la base como nuevo vértice de la envolvente y se generan dos subproblemas recursivos sobre los triángulos formados, hasta cerrar el polígono.</li>
+    </ul>
+  </div>
+</section>
+
+  <!-- Ejemplo de código + Icosaedro interactivo -->
   <section>
-    <h2>Código Python: Envolvente Convexa Dinámica</h2>
+    <h2>Código Icosaedro</h2>
     <div class="code-section">
+      <button class="copy-btn" onclick="copyCode(this)" title="Copiar código">📋</button>
       <pre><code class="language-python">
-import numpy as np
-import plotly.graph_objects as go
+import numpy as np, plotly.graph_objects as go
 from IPython.display import HTML
 
-HTML('''
-<h1 style="text-align:center; color:#FFD700; font-family:Arial, sans-serif;">
-    Envolvente Convexa Dinámica Avanzada
-</h1>
-''')
+phi = (1 + 5**.5) / 2
+verts = np.array([
+    [x,y,z] for x,y,z in [
+      (-1,phi,0),(1,phi,0),(-1,-phi,0),(1,-phi,0),
+      (0,-1,phi),(0,1,phi),(0,-1,-phi),(0,1,-phi),
+      (phi,0,-1),(phi,0,1),(-phi,0,-1),(-phi,0,1)
+    ]
+]) / np.linalg.norm([-1,phi,0])
 
-np.random.seed(42)
-pts = np.random.randint(0, 200, size=(200, 2))
-pts_sorted = pts[np.lexsort((pts[:,1], pts[:,0]))]
+faces = [
+  (0,11,5),(0,5,1),(0,1,7),(0,7,10),(0,10,11),
+  (1,5,9),(5,11,4),(11,10,2),(10,7,6),(7,1,8),
+  (3,9,4),(3,4,2),(3,2,6),(3,6,8),(3,8,9),
+  (4,9,5),(2,4,11),(6,2,10),(8,6,7),(9,8,1)
+]
+i,j,k = zip(*faces)
 
-def incremental_hull(points):
-    def cross(o, a, b):
-        return (a[0]-o[0])*(b[1]-o[1]) - (a[1]-o[1])*(b[0]-o[0])
-    lower, upper, steps = [], [], []
-    for p in points:
-        lower.append(p.tolist())
-        while len(lower)>=3 and cross(lower[-3], lower[-2], lower[-1])<=0:
-            lower.pop(-2)
-        steps.append(lower.copy())
-    for p in points[::-1]:
-        upper.append(p.tolist())
-        while len(upper)>=3 and cross(upper[-3], upper[-2], upper[-1])<=0:
-            upper.pop(-2)
-        full = lower + upper[1:-1]
-        steps.append(full.copy())
-    return steps
-
-hull_steps = incremental_hull(pts_sorted)
-
-frames = []
-for hull in hull_steps:
-    hx = [pt[0] for pt in hull] + ([hull[0][0]] if hull else [])
-    hy = [pt[1] for pt in hull] + ([hull[0][1]] if hull else [])
-    frames.append(go.Frame(
-        data=[
-            go.Scatter(x=pts[:,0], y=pts[:,1], mode='markers',
-                       marker=dict(size=6, color='#4ea8ff'), name='Puntos'),
-            go.Scatter(x=hx, y=hy, mode='lines+markers',
-                       line=dict(width=2, color='#fde725'),
-                       marker=dict(size=5, color='#fde725'), name='Hull')
-        ]
-    ))
-
-fig = go.Figure(
-    data=frames[0].data,
-    frames=frames
-)
+fig = go.Figure(go.Mesh3d(
+    x=verts[:,0], y=verts[:,1], z=verts[:,2],
+    i=i, j=j, k=k,
+    opacity=.8, colorscale='Viridis', intensity=verts[:,2],
+    flatshading=True, showscale=False,
+    lighting=dict(ambient=.6, diffuse=.6, roughness=.9, specular:.5),
+    lightposition=dict(x=100, y=200, z=0)
+))
 fig.update_layout(
-    updatemenus=[dict(
-        type='buttons',
-        showactive=False,
-        x=1.15, y=1,
-        xanchor='right', yanchor='top',
-        buttons=[dict(label='▶ Play',
-                      method='animate',
-                      args=[None, {"frame": {"duration": 100, "redraw": True},
-                                   "fromcurrent": True, "mode": "immediate"}])]
-    )],
+    scene=dict(
+      xaxis_visible=False, yaxis_visible=False, zaxis_visible=False,
+      aspectmode='data', camera_eye=dict(x=1.5, y=1.5, z=1.5)
+    ),
     margin=dict(l=0, r=0, b=0, t=0),
     paper_bgcolor='black',
-    plot_bgcolor='black',
-    xaxis=dict(visible=False),
-    yaxis=dict(visible=False),
-    template='plotly_dark',
-    height=600
+    template='plotly_dark'
 )
 fig.show()
       </code></pre>
     </div>
-  </section>
 
-  <!-- Animación en bucle con Plotly.js -->
-  <section>
-    <h2>Animación Dinámica en Bucle</h2>
-    <div id="hull-animation" style="width:100%; max-width:800px; height:600px; margin:1rem auto;"></div>
+    <!-- Contenedor para el gráfico Plotly -->
+    <div id="icosaedro-plot" style="width:100%; height:500px; margin-top:1.5rem;"></div>
     <script>
-      // 1) Generar 200 puntos aleatorios ordenados
-      const N = 200;
-      const pts = Array.from({length:N}, () => [
-        Math.random()*200, Math.random()*200
-      ]).sort((a,b)=> a[0]-b[0] || a[1]-b[1]);
-
-      // 2) Función incremental para convex hull
-      function cross(o,a,b){
-        return (a[0]-o[0])*(b[1]-o[1]) - (a[1]-o[1])*(b[0]-o[0]);
-      }
-      function incrementalHull(points){
-        const lower=[], upper=[], steps=[];
-        for(const p of points){
-          lower.push(p);
-          while(lower.length>=3 && cross(lower[lower.length-3], lower[lower.length-2], lower[lower.length-1])<=0){
-            lower.splice(lower.length-2,1);
-          }
-          steps.push(lower.slice());
+      Plotly.newPlot(
+        'icosaedro-plot',
+        [{
+          type: "mesh3d",
+          x: [-0.5257,0.5257,-0.5257,0.5257,0,0,0,0,0.8507,0.8507,-0.8507,-0.8507],
+          y: [0.8507,0.8507,-0.8507,-0.8507,-0.5257,0.5257,-0.5257,0.5257,0,0,0,0],
+          z: [0,0,0,0,0.8507,0.8507,-0.8507,-0.8507,-0.5257,0.5257,-0.5257,0.5257],
+          i: [0,0,0,0,0,1,5,11,10,7,3,3,3,3,3,4,2,6,8,9],
+          j: [11,5,1,7,10,5,11,10,7,1,9,4,2,6,8,9,4,2,6,8],
+          k: [5,1,7,10,11,9,4,2,6,8,4,2,6,8,9,5,11,10,7,1],
+          opacity: 0.8,
+          flatshading: true,
+          colorscale: [[0,"#440154"],[1,"#fde725"]],
+          showscale: false,
+          lighting: { ambient:0.6, diffuse:0.6, roughness:0.9, specular:0.5 },
+          lightposition: { x:100, y:200, z:0 }
+        }],
+        {
+          margin:{ l:0, r:0, b:0, t:0 },
+          paper_bgcolor: "black",
+          scene: {
+            aspectmode: "data",
+            camera:{ eye:{ x:1.5, y:1.5, z:1.5 } },
+            xaxis:{ visible:false },
+            yaxis:{ visible:false },
+            zaxis:{ visible:false }
+          },
+          template:"plotly_dark"
         }
-        for(const p of points.slice().reverse()){
-          upper.push(p);
-          while(upper.length>=3 && cross(upper[upper.length-3], upper[upper.length-2], upper[upper.length-1])<=0){
-            upper.splice(upper.length-2,1);
-          }
-          steps.push(lower.concat(upper.slice(1,-1)).slice());
-        }
-        return steps;
+      );
+
+      function copyCode(btn){
+        const code = btn.parentNode.querySelector('pre code').innerText;
+        navigator.clipboard.writeText(code);
+        btn.textContent = '✅';
+        setTimeout(() => btn.textContent = '📋', 1500);
       }
-      const frames = incrementalHull(pts).map(poly=>{
-        const xh = poly.map(p=>p[0]).concat(poly.length?[poly[0][0]]:[]),
-              yh = poly.map(p=>p[1]).concat(poly.length?[poly[0][1]]:[]);
-        return {data:[
-          {x:pts.map(p=>p[0]),y:pts.map(p=>p[1]),mode:'markers',
-           marker:{size:6,color:'#4ea8ff'}},
-          {x:xh,y:yh,mode:'lines+markers',
-           line:{width:2,color:'#fde725'},
-           marker:{size:5,color:'#fde725'}}
-        ]};
-      });
-
-      const TOTAL_MS=3000,
-            DURATION=Math.max(1,Math.floor(TOTAL_MS/frames.length)),
-            layout={margin:{l:0,r:0,b:0,t:0},paper_bgcolor:'black',
-                    plot_bgcolor:'black',xaxis:{visible:false},
-                    yaxis:{visible:false},template:'plotly_dark',height:600};
-
-      function playLoop(){
-        Plotly.animate('hull-animation', frames, {
-          frame:     { duration: DURATION, redraw: true },
-          transition:{ duration: 0 },
-          mode:      'immediate'
-        }).then(()=> setTimeout(playLoop, 2000));
-      }
-
-      Plotly.newPlot('hull-animation', frames[0].data, layout).then(playLoop);
     </script>
   </section>
 
@@ -356,11 +224,10 @@ fig.show()
   <section>
     <h2>Notebook Colab</h2>
     <a class="notebook-link"
-       href="https://drive.google.com/file/d/1n6wc1QCG2mevjJj2zXE150oQc8JDcWI/view?usp=sharing"
+       href="https://drive.google.com/file/d/1n6wc1QCG2mevjJj2jzXE150oQc8JDcWI/view?usp=sharing"
        target="_blank" rel="noopener noreferrer">
       Abrir notebook en Colab
     </a>
   </section>
 </body>
 </html>
-
