@@ -59,12 +59,30 @@
       border-radius: 6px;
       font-family: Consolas, 'Courier New', monospace;
       font-size: 0.9rem;
-      margin-top: 1rem;
+      margin: 0;
     }
     .code-section {
+      position: relative;
       margin-top: 1rem;
       border-left: 4px solid #4ea8ff;
-      padding-left: 1rem;
+      padding: 1rem 1rem 1rem 1rem;
+      background: #222;
+      border-radius: 6px;
+    }
+    .code-section .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #4ea8ff;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .code-section .copy-btn:hover {
+      opacity: 1;
     }
     .notebook-link {
       margin-top: 1rem;
@@ -79,6 +97,7 @@
     }
     .notebook-link:hover { background: #367acc; }
     nav { margin-bottom: 2rem; }
+
   </style>
 
   <!-- Carga Plotly una sola vez -->
@@ -142,7 +161,7 @@ fig = go.Figure(go.Mesh3d(
     i=i, j=j, k=k,
     opacity=.8, colorscale='Viridis', intensity=verts[:,2],
     flatshading=True, showscale=False,
-    lighting=dict(ambient=.6, diffuse=.6, roughness=.9, specular=.5),
+    lighting=dict(ambient=.6, diffuse=.6, roughness=.9, specular:.5),
     lightposition=dict(x=100, y=200, z=0)
 ))
 fig.update_layout(
@@ -193,12 +212,11 @@ fig.show()
       );
 
       function copyCode(btn){
-        const code=btn.nextElementSibling.innerText;
+        const code = btn.parentNode.querySelector('pre code').innerText;
         navigator.clipboard.writeText(code);
-        btn.textContent='✅';
-        setTimeout(()=>btn.textContent='📋',1500);
+        btn.textContent = '✅';
+        setTimeout(() => btn.textContent = '📋', 1500);
       }
-      
     </script>
   </section>
 
@@ -206,11 +224,10 @@ fig.show()
   <section>
     <h2>Notebook Colab</h2>
     <a class="notebook-link"
-       href="https://drive.google.com/file/d/1n6wc1QCG2mevjJj2jzXE150oQc8JDcWI/view?usp=sharing"
+       href="https://drive.google.com/file/d/1n6wc1QCG2mevjJj2zXE150oQc8JDcWI/view?usp=sharing"
        target="_blank" rel="noopener noreferrer">
       Abrir notebook en Colab
     </a>
   </section>
 </body>
 </html>
-
