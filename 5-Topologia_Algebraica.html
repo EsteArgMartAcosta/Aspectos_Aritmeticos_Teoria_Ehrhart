@@ -4,6 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Topología Algebraica</title>
+  <link rel="icon" href="https://esteargen.github.io/Aspectos_Aritmeticos_Teoria_Ehrhart/Icono/logo1.ico" type="image/x-icon" />
+
+
+
+
+  <!-- Prism.js: tema Tomorrow Night y soporte de Python -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+  />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    defer
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"
+    defer
+  ></script>
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,37 +35,21 @@
       position: relative;
       overflow-x: hidden;
     }
-    #gif-top-left {
+    /* GIFs en las esquinas */
+    #gif-top-left, #gif-top-right, #gif-bottom-left, #gif-bottom-right {
       position: fixed;
-      top: 0; left: 0;
-      width: 250px; opacity: 0.07;
-      z-index: -1; pointer-events: none;
+      width: 250px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
     }
-    #gif-top-right {
-      position: fixed;
-      top: 0; right: 0;
-      width: 250px; opacity: 0.07;
-      z-index: -1; pointer-events: none;
-    }
-    #gif-bottom-left {
-      position: fixed;
-      bottom: 0; left: 0;
-      width: 250px; opacity: 0.07;
-      z-index: -1; pointer-events: none;
-    }
-    #gif-bottom-right {
-      position: fixed;
-      bottom: 0; right: 0;
-      width: 250px; opacity: 0.07;
-      z-index: -1; pointer-events: none;
-    }
-    a {
-      color: #4ea8ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    #gif-top-left { top: 0; left: 0; }
+    #gif-top-right { top: 0; right: 0; }
+    #gif-bottom-left { bottom: 0; left: 0; }
+    #gif-bottom-right { bottom: 0; right: 0; }
+
+    a { color: #4ea8ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
     h1, h2 {
       font-weight: 400;
       border-bottom: 1px solid #444;
@@ -60,13 +63,30 @@
       border-radius: 6px;
       font-family: Consolas, 'Courier New', monospace;
       font-size: 0.9rem;
-      color: #d1d1d1;
-      margin-top: 1rem;
+      margin: 0;
     }
     .code-section {
+      position: relative;
       margin-top: 1rem;
       border-left: 4px solid #4ea8ff;
-      padding-left: 1rem;
+      padding: 1rem 1rem 1rem 1rem;
+      background: #222;
+      border-radius: 6px;
+    }
+    .code-section .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #4ea8ff;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .code-section .copy-btn:hover {
+      opacity: 1;
     }
     .notebook-link {
       margin-top: 1rem;
@@ -79,49 +99,137 @@
       font-weight: 600;
       transition: background 0.3s ease;
     }
-    .notebook-link:hover {
-      background: #367acc;
-    }
-    nav {
-      margin-bottom: 2rem;
-    }
+    .notebook-link:hover { background: #367acc; }
+    nav { margin-bottom: 2rem; }
+
   </style>
+
+  <!-- Carga Plotly una sola vez -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 </head>
 <body>
   <nav>
     <a href="index.html">← Volver a la página principal</a>
   </nav>
 
+  <!-- GIFs en las esquinas -->
   <img id="gif-top-left" src="https://i.gifer.com/9PXZ.gif" alt="GIF esquina superior izquierda" />
   <img id="gif-top-right" src="https://i.gifer.com/UcIY.gif" alt="GIF esquina superior derecha" />
   <img id="gif-bottom-left" src="https://i.gifer.com/QWsX.gif" alt="GIF esquina inferior izquierda" />
   <img id="gif-bottom-right" src="https://i.gifer.com/43HE.gif" alt="GIF esquina inferior derecha" />
 
-  <h1>Topología Algebraica</h1>
-
-  <section>
-    <p>Exploración de conceptos y herramientas de topología algebraica aplicados a objetos geométricos y poliedros.</p>
-  </section>
-
-  <section>
-    <h2>Ejemplo de código</h2>
-    <div class="code-section">
-      <pre><code># Ejemplo de cálculo de homología simplicial en Python con Gudhi
-import gudhi
-
-simplex_tree = gudhi.SimplexTree()
-simplex_tree.insert([0,1,2])
-simplex_tree.insert([1,2,3])
-
-print("Homología:")
-print(simplex_tree.persistence())
-</code></pre>
+  <!-- Sección Construcción de Gráficos -->
+  <section id="construccion-graficos" style="margin: 2rem 0;">
+    <h2 style="font-size:1.8rem; color:#fff;">Topología Algebraica</h2>
+    <div style="text-align: justify; color: #ddd; line-height: 1.6;">
+      <p>
+        En esta sección se reúnen varias de las figuras estáticas y dinámicas que acompañan al cuerpo de la tesis, elaboradas para documentar y clarificar los procesos geométricos esenciales que respaldan los resultados teóricos:
+      </p>
+      <ul style="margin-left:1.5rem; list-style-type:disc;">
+        <li><strong>Envolventes convexas</strong> sobre conjuntos de puntos en el plano, mostrando el polígono mínimo que engloba todos los vértices y facilitando el análisis de sus propiedades métricas.</li>
+        <li><strong>Hiperplanos</strong> utilizados para definir las caras de los p-politopos, estableciendo de manera precisa los límites de cada región en el espacio.</li>
+        <li><strong>Triángulos</strong> diseñados específicamente para demostrar el Teorema de Pick, ilustrando la relación entre el área, los puntos interiores y los puntos en la frontera.</li>
+        <li><strong>Politopos</strong> representados en 2D, con vistas en alzado y perspectiva, que permiten ver su estructura (vértices, aristas y caras) y cómo cambian al rotarlos.</li>
+      </ul>
     </div>
   </section>
 
+  <!-- Ejemplo de código + Icosaedro interactivo -->
+  <section>
+    <h2>Código Icosaedro</h2>
+    <div class="code-section">
+      <button class="copy-btn" onclick="copyCode(this)" title="Copiar código">📋</button>
+      <pre><code class="language-python">
+import numpy as np, plotly.graph_objects as go
+from IPython.display import HTML
+
+phi = (1 + 5**.5) / 2
+verts = np.array([
+    [x,y,z] for x,y,z in [
+      (-1,phi,0),(1,phi,0),(-1,-phi,0),(1,-phi,0),
+      (0,-1,phi),(0,1,phi),(0,-1,-phi),(0,1,-phi),
+      (phi,0,-1),(phi,0,1),(-phi,0,-1),(-phi,0,1)
+    ]
+]) / np.linalg.norm([-1,phi,0])
+
+faces = [
+  (0,11,5),(0,5,1),(0,1,7),(0,7,10),(0,10,11),
+  (1,5,9),(5,11,4),(11,10,2),(10,7,6),(7,1,8),
+  (3,9,4),(3,4,2),(3,2,6),(3,6,8),(3,8,9),
+  (4,9,5),(2,4,11),(6,2,10),(8,6,7),(9,8,1)
+]
+i,j,k = zip(*faces)
+
+fig = go.Figure(go.Mesh3d(
+    x=verts[:,0], y=verts[:,1], z=verts[:,2],
+    i=i, j=j, k=k,
+    opacity=.8, colorscale='Viridis', intensity=verts[:,2],
+    flatshading=True, showscale=False,
+    lighting=dict(ambient=.6, diffuse=.6, roughness=.9, specular:.5),
+    lightposition=dict(x=100, y=200, z=0)
+))
+fig.update_layout(
+    scene=dict(
+      xaxis_visible=False, yaxis_visible=False, zaxis_visible=False,
+      aspectmode='data', camera_eye=dict(x=1.5, y=1.5, z=1.5)
+    ),
+    margin=dict(l=0, r=0, b=0, t=0),
+    paper_bgcolor='black',
+    template='plotly_dark'
+)
+fig.show()
+      </code></pre>
+    </div>
+
+    <!-- Contenedor para el gráfico Plotly -->
+    <div id="icosaedro-plot" style="width:100%; height:500px; margin-top:1.5rem;"></div>
+    <script>
+      Plotly.newPlot(
+        'icosaedro-plot',
+        [{
+          type: "mesh3d",
+          x: [-0.5257,0.5257,-0.5257,0.5257,0,0,0,0,0.8507,0.8507,-0.8507,-0.8507],
+          y: [0.8507,0.8507,-0.8507,-0.8507,-0.5257,0.5257,-0.5257,0.5257,0,0,0,0],
+          z: [0,0,0,0,0.8507,0.8507,-0.8507,-0.8507,-0.5257,0.5257,-0.5257,0.5257],
+          i: [0,0,0,0,0,1,5,11,10,7,3,3,3,3,3,4,2,6,8,9],
+          j: [11,5,1,7,10,5,11,10,7,1,9,4,2,6,8,9,4,2,6,8],
+          k: [5,1,7,10,11,9,4,2,6,8,4,2,6,8,9,5,11,10,7,1],
+          opacity: 0.8,
+          flatshading: true,
+          colorscale: [[0,"#440154"],[1,"#fde725"]],
+          showscale: false,
+          lighting: { ambient:0.6, diffuse:0.6, roughness:0.9, specular:0.5 },
+          lightposition: { x:100, y:200, z:0 }
+        }],
+        {
+          margin:{ l:0, r:0, b:0, t:0 },
+          paper_bgcolor: "black",
+          scene: {
+            aspectmode: "data",
+            camera:{ eye:{ x:1.5, y:1.5, z:1.5 } },
+            xaxis:{ visible:false },
+            yaxis:{ visible:false },
+            zaxis:{ visible:false }
+          },
+          template:"plotly_dark"
+        }
+      );
+
+      function copyCode(btn){
+        const code = btn.parentNode.querySelector('pre code').innerText;
+        navigator.clipboard.writeText(code);
+        btn.textContent = '✅';
+        setTimeout(() => btn.textContent = '📋', 1500);
+      }
+    </script>
+  </section>
+
+  <!-- Notebook Colab -->
   <section>
     <h2>Notebook Colab</h2>
-    <a class="notebook-link" href="https://colab.research.google.com/drive/your-notebook-id" target="_blank" rel="noopener noreferrer">
+    <a class="notebook-link"
+       href="https://drive.google.com/file/d/1n6wc1QCG2mevjJj2jzXE150oQc8JDcWI/view?usp=sharing"
+       target="_blank" rel="noopener noreferrer">
       Abrir notebook en Colab
     </a>
   </section>
