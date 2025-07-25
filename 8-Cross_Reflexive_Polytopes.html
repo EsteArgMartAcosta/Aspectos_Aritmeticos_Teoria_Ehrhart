@@ -6,9 +6,6 @@
   <title>Politopos Reflexivos y Cruzados</title>
   <link rel="icon" href="https://esteargen.github.io/Aspectos_Aritmeticos_Teoria_Ehrhart/Icono/logo1.ico" type="image/x-icon" />
 
-
-
-
   <!-- Prism.js: tema Tomorrow Night y soporte de Python -->
   <link
     rel="stylesheet"
@@ -22,6 +19,18 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"
     defer
   ></script>
+
+  <!-- MathJax para renderizar LaTeX -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)'], ['$', '$']],
+        displayMath: [['$$','$$'], ['\\[','\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" defer></script>
 
   <style>
     body {
@@ -55,6 +64,7 @@
       border-bottom: 1px solid #444;
       padding-bottom: 0.5rem;
       margin-top: 2rem;
+      color: #fff;
     }
     pre {
       background: #222;
@@ -69,7 +79,7 @@
       position: relative;
       margin-top: 1rem;
       border-left: 4px solid #4ea8ff;
-      padding: 1rem 1rem 1rem 1rem;
+      padding: 1rem;
       background: #222;
       border-radius: 6px;
     }
@@ -101,7 +111,6 @@
     }
     .notebook-link:hover { background: #367acc; }
     nav { margin-bottom: 2rem; }
-
   </style>
 
   <!-- Carga Plotly una sola vez -->
@@ -120,33 +129,41 @@
 
   <!-- Sección Construcción de Gráficos -->
   <section id="construccion-graficos" style="margin: 2rem 0;">
-    <h2 style="font-size:1.8rem; color:#fff;">Politopos Reflexivos y Cruzados</h2>
+    <h2>Politopos Reflexivos y Cruzados</h2>
     <div style="text-align: justify; color: #ddd; line-height: 1.6;">
-       <p>
-    Se consideran los <strong>polítopos reflexivos</strong>, definidos como aquellos politopos convexos integrales cuyo único punto interior en la red es el origen y cuyo polar resulta asimismo integral. De forma análoga, se estudian los <strong>polítopos cruzados</strong>, obtenidos como la envolvente convexa de los vectores canónicos junto con sus negativos, ejemplificando la norma ℓ<sub>1</sub> en espacios euclidianos de cualquier dimensión.
-  </p>
 
-  <p>
-    Gracias a la <em>palindromía</em> del polinomio <em>h*</em> asociado —es decir, h<sub>k</sub> = h<sub>d–k</sub>— se deduce que las raíces de su polinomio de Ehrhart L<sub>P</sub>(k) se distribuyen simétricamente respecto a la línea \(\Re(s)=-\tfrac12\). Más concretamente, tras el cambio de variable natural \(s = \tfrac{k+1}{k}\) (o equivalente), se verifica que
-    <math display="block">
-      L_{P}\bigl(-\tfrac12 + i\,t\bigr) \;=\; 0
-      \quad\Longleftrightarrow\quad
-      t\in\mathbb{R},
-    </math>
-    para todo \(t\), lo cual confirma la <strong>hipótesis de la línea crítica</strong> en la forma \(\Re(s)=-\tfrac12\).
-  </p>
+      <p>
+        Se consideran los <strong>polítopos reflexivos</strong>, definidos como aquellos politopos convexos integrales cuyo único punto interior en la red es el origen y cuyo polar resulta asimismo integral. De forma análoga, se estudian los <strong>polítopos cruzados</strong>, obtenidos como la envolvente convexa de los vectores canónicos junto con sus negativos, ejemplificando la norma ℓ<sub>1</sub> en espacios euclidianos de cualquier dimensión.
+      </p>
 
-  <p>
-    Por otro lado, ha sido empleado el <strong>teorema de Fernando Rodríguez Villegas</strong> para familias paramétricas de politopos reflexivos de dimensión arbitraria. En virtud de este resultado, si el numerador U(t) de la serie de Ehrhart
-    <math display="inline">
-      E_{P}(t)=\sum_{k\ge0}L_{P}(k)\,t^{k} \;=\;\frac{U(t)}{(1-t)^{d+1}}
-    </math>
-    posee todas sus raíces en el círculo unitario, entonces su polinomio de Hilbert H(n) resulta un CL‑polinomio cuyas raíces no triviales se alinean sobre \(\Re(n)=-\tfrac12\). Así, se obtiene un análogo geométrico de la conjetura de Riemann en el marco aritmético de los politopos.
-  </p>
+      <p>
+        Gracias a la <em>palindromía</em> del polinomio <em>h*</em> asociado —es decir, \(h_{k}=h_{d-k}\)—, se deduce que las raíces de su polinomio de Ehrhart \(L_{P}(k)\) se distribuyen simétricamente respecto a la línea crítica. Más concretamente, tras el cambio de variable natural
+        \[
+          s=-\tfrac12 + i\,t,\quad t\in\mathbb{R},
+        \]
+        se verifica que
+        \[
+          L_{P}(s)=0
+          \quad\Longleftrightarrow\quad
+          \Re(s)=-\tfrac12,
+        \]
+        lo cual confirma la <strong>hipótesis de la línea crítica</strong>.
+      </p>
 
-  <p>
-    Finalmente, la técnica de <em>interlacing</em> de secuencias de polinomios ortogonales garantiza que, al variar la dimensión d, las raíces de L<sub>♢<sub>d</sub></sub>(k) y L<sub>♢<sub>d+1</sub></sub>(k) se entrelacen de manera estricta a lo largo de \(\Re(s)=-\tfrac12\), reforzando la estabilidad combinatoria y analítica de estas distribuciones de raíces.
-  </p>
+      <p>
+        Por otro lado, ha sido empleado el <strong>teorema de Fernando Rodríguez Villegas</strong> para familias paramétricas de politopos reflexivos de dimensión arbitraria. En virtud de este resultado, si el numerador \(U(t)\) de la serie de Ehrhart
+        \[
+          E_{P}(t)
+          =\sum_{k\ge0}L_{P}(k)\,t^{k}
+          =\frac{U(t)}{(1-t)^{d+1}}
+        \]
+        posee todas sus raíces en el círculo unitario, entonces su polinomio de Hilbert \(H(n)\) resulta un CL‑polinomio cuyas raíces no triviales se alinean sobre \(\Re(n)=-\tfrac12\). Así, se obtiene un análogo geométrico de la conjetura de Riemann.
+      </p>
+
+      <p>
+        Finalmente, la técnica de <em>interlacing</em> de secuencias de polinomios ortogonales garantiza que, al variar la dimensión \(d\), las raíces de \(L_{\diamondsuit_{d}}(k)\) y \(L_{\diamondsuit_{d+1}}(k)\) se entrelacen estrictamente a lo largo de \(\Re(s)=-\tfrac12\), reforzando la estabilidad combinatoria y analítica de estas distribuciones de raíces.
+      </p>
+
     </div>
   </section>
 
@@ -214,7 +231,7 @@ fig.show()
           flatshading: true,
           colorscale: [[0,"#440154"],[1,"#fde725"]],
           showscale: false,
-          lighting: { ambient:0.6, diffuse:0.6, roughness:0.9, specular:0.5 },
+          lighting: { ambient:0.6, diffuse:0.6, roughness:0.9, specular:.5 },
           lightposition: { x:100, y:200, z:0 }
         }],
         {
