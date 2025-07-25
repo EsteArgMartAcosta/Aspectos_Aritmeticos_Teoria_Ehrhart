@@ -126,100 +126,247 @@
         Una triangulación unimodular de un politopo reticular es una partición en símplices cuyos vértices tienen coordenadas enteras y cuya matriz de diferencias tiene determinante ±1. Este tipo de triangulaciones garantizan que los símplices no contengan puntos reticulares internos, lo cual es crucial para aplicaciones en geometría discreta y optimización entera. En esta sección se exploran metodologías para construir tales triangulaciones, ilustrando cada etapa mediante animaciones que destacan las propiedades clave:      </p>
       <ul style="margin-left:1.5rem; list-style-type:disc;">
         <li><strong>Construcción mediante descomposición barycentrica :</strong> Se parte de un politopo con vértices en el retículo entero d-dimensional y se subdividen sus caras de manera iterativa, garantizando que cada nuevo símplice forme una base que genere el retículo completo sin huecos. El proceso continúa hasta que todos los símplices resultantes cumplan la condición de determinante igual a uno o menos uno. </li>
-        <li><strong>Triangulación estrella </strong> </li>
-        <li><strong>Triángulos</strong> diseñados específicamente para demostrar el Teorema de Pick, ilustrando la relación entre el área, los puntos interiores y los puntos en la frontera.</li>
-        <li><strong>Politopos</strong> representados en 2D, con vistas en alzado y perspectiva, que permiten ver su estructura (vértices, aristas y caras) y cómo cambian al rotarlos.</li>
+        <li><strong>Triangulación e<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Triangulaciones</title>
+  <link rel="icon" href="https://esteargen.github.io/Aspectos_Aritmeticos_Teoria_Ehrhart/Icono/logo1.ico" type="image/x-icon" />
+
+  <!-- Prism.js: tema Tomorrow Night y soporte de Python -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+  />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    defer
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"
+    defer
+  ></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #eee;
+      margin: 0 auto;
+      max-width: 900px;
+      padding: 1rem 2rem;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* GIFs en las esquinas */
+    #gif-top-left, #gif-top-right, #gif-bottom-left, #gif-bottom-right {
+      position: fixed;
+      width: 250px;
+      opacity: 0.07;
+      z-index: -1;
+      pointer-events: none;
+    }
+    #gif-top-left { top: 0; left: 0; }
+    #gif-top-right { top: 0; right: 0; }
+    #gif-bottom-left { bottom: 0; left: 0; }
+    #gif-bottom-right { bottom: 0; right: 0; }
+
+    a { color: #4ea8ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2 {
+      font-weight: 400;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+    pre {
+      background: #222;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .code-section {
+      position: relative;
+      margin-top: 1rem;
+      border-left: 4px solid #4ea8ff;
+      padding: 1rem;
+      background: #222;
+      border-radius: 6px;
+    }
+    .code-section .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #4ea8ff;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .code-section .copy-btn:hover {
+      opacity: 1;
+    }
+    .notebook-link {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #4ea8ff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .notebook-link:hover { background: #367acc; }
+    nav { margin-bottom: 2rem; }
+  </style>
+
+  <!-- Carga Plotly una sola vez -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">← Volver a la página principal</a>
+  </nav>
+
+  <!-- GIFs en las esquinas -->
+  <img id="gif-top-left" src="https://i.pinimg.com/originals/00/49/8a/00498ae5921a180b8854196c923b45e8.gif" alt="GIF esquina superior izquierda" />
+  <img id="gif-top-right" src="https://i.pinimg.com/originals/68/34/71/683471ad4a7e0dd3285c1cdba32e013c.gif" alt="GIF esquina superior derecha" />
+  <img id="gif-bottom-left" src="https://i.pinimg.com/originals/2b/7e/6e/2b7e6ec08370278d3682126cd2aa09bb.gif" alt="GIF esquina inferior izquierda" />
+  <img id="gif-bottom-right" src="https://i.pinimg.com/originals/fc/71/87/fc7187c57284d9719cdfb2b15f8bf242.gif" alt="GIF esquina inferior derecha" />
+
+  <!-- Sección de introducción -->
+  <section id="construccion-graficos" style="margin: 2rem 0;">
+    <h2 style="font-size:1.8rem; color:#fff;">Triangulaciones</h2>
+    <div style="text-align: justify; color: #ddd; line-height: 1.6;">
+      <p>
+        Una triangulación unimodular de un politopo reticular es una partición en símplices cuyos vértices tienen coordenadas enteras y cuya matriz de diferencias tiene determinante ±1. Este tipo de triangulaciones garantizan que los símplices no contengan puntos reticulares internos, lo cual es crucial para aplicaciones en geometría discreta y optimización entera. En esta sección se exploran metodologías para construir tales triangulaciones, ilustrando cada etapa mediante animaciones que destacan las propiedades clave:
+      </p>
+      <ul style="margin-left:1.5rem; list-style-type:disc;">
+        <li><strong>Construcción mediante descomposición barycéntrica:</strong> subdivisión iterativa de caras asegurando determinante ±1.</li>
+        <li><strong>Triangulación estrella:</strong> generación de símplices alrededor de un vértice central.</li>
       </ul>
     </div>
   </section>
 
-  <!-- Ejemplo de código + Icosaedro interactivo -->
+  <!-- Código Python de ejemplo (Colab) -->
   <section>
-    <h2>Código Icosaedro</h2>
+    <h2>Código Cubo Triangulado</h2>
     <div class="code-section">
       <button class="copy-btn" onclick="copyCode(this)" title="Copiar código">📋</button>
       <pre><code class="language-python">
-import numpy as np, plotly.graph_objects as go
-from IPython.display import HTML
+import numpy as np
+import plotly.graph_objects as go
 
-phi = (1 + 5**.5) / 2
+# Vértices normalizados de un cubo
 verts = np.array([
-    [x,y,z] for x,y,z in [
-      (-1,phi,0),(1,phi,0),(-1,-phi,0),(1,-phi,0),
-      (0,-1,phi),(0,1,phi),(0,-1,-phi),(0,1,-phi),
-      (phi,0,-1),(phi,0,1),(-phi,0,-1),(-phi,0,1)
-    ]
-]) / np.linalg.norm([-1,phi,0])
+  [-1,-1,-1],[-1,-1, 1],[-1, 1,-1],[-1, 1, 1],
+  [ 1,-1,-1],[ 1,-1, 1],[ 1, 1,-1],[ 1, 1, 1]
+]) / np.sqrt(3)
 
-faces = [
-  (0,11,5),(0,5,1),(0,1,7),(0,7,10),(0,10,11),
-  (1,5,9),(5,11,4),(11,10,2),(10,7,6),(7,1,8),
-  (3,9,4),(3,4,2),(3,2,6),(3,6,8),(3,8,9),
-  (4,9,5),(2,4,11),(6,2,10),(8,6,7),(9,8,1)
+# Caras como cuadriláteros
+faces = [(0,1,3,2),(4,6,7,5),(0,2,6,4),(1,5,7,3),(0,4,5,1),(2,3,7,6)]
+
+# Convertir cada cara en dos triángulos
+i,j,k = [],[],[]
+for a,b,c,d in faces:
+    i += [a,a]
+    j += [b,c]
+    k += [c,d]
+
+# Colores aleatorios para cada triángulo
+import random
+colors = [
+  f"rgb({random.randint(50,255)},{random.randint(50,255)},{random.randint(50,255)})"
+  for _ in range(len(i))
 ]
-i,j,k = zip(*faces)
 
+# Plotly Mesh3d
 fig = go.Figure(go.Mesh3d(
-    x=verts[:,0], y=verts[:,1], z=verts[:,2],
-    i=i, j=j, k=k,
-    opacity=.8, colorscale='Viridis', intensity=verts[:,2],
-    flatshading=True, showscale=False,
-    lighting=dict(ambient=.6, diffuse=.6, roughness=.9, specular:.5),
-    lightposition=dict(x=100, y=200, z=0)
+  x=verts[:,0], y=verts[:,1], z=verts[:,2],
+  i=i, j=j, k=k,
+  facecolor=colors,
+  opacity=0.6,
+  flatshading=True,
+  showscale=False
 ))
 fig.update_layout(
-    scene=dict(
-      xaxis_visible=False, yaxis_visible=False, zaxis_visible=False,
-      aspectmode='data', camera_eye=dict(x=1.5, y=1.5, z=1.5)
-    ),
-    margin=dict(l=0, r=0, b=0, t=0),
-    paper_bgcolor='black',
-    template='plotly_dark'
+  scene=dict(
+    xaxis_visible=False, yaxis_visible=False, zaxis_visible=False,
+    aspectmode='data', camera_eye=dict(x=1.5,y=1.5,z=1.5)
+  ),
+  margin=dict(l=0,r=0,b=0,t=0),
+  paper_bgcolor='black',
+  template='plotly_dark'
 )
 fig.show()
       </code></pre>
     </div>
+  </section>
 
-    <!-- Contenedor para el gráfico Plotly -->
-    <div id="icosaedro-plot" style="width:100%; height:500px; margin-top:1.5rem;"></div>
+  <!-- Incrustación del cubo triangulado -->
+  <section>
+    <div id="cubo-plot" style="width:100%; height:600px; margin-top:1.5rem;"></div>
     <script>
-      Plotly.newPlot(
-        'icosaedro-plot',
-        [{
-          type: "mesh3d",
-          x: [-0.5257,0.5257,-0.5257,0.5257,0,0,0,0,0.8507,0.8507,-0.8507,-0.8507],
-          y: [0.8507,0.8507,-0.8507,-0.8507,-0.5257,0.5257,-0.5257,0.5257,0,0,0,0],
-          z: [0,0,0,0,0.8507,0.8507,-0.8507,-0.8507,-0.5257,0.5257,-0.5257,0.5257],
-          i: [0,0,0,0,0,1,5,11,10,7,3,3,3,3,3,4,2,6,8,9],
-          j: [11,5,1,7,10,5,11,10,7,1,9,4,2,6,8,9,4,2,6,8],
-          k: [5,1,7,10,11,9,4,2,6,8,4,2,6,8,9,5,11,10,7,1],
-          opacity: 0.8,
-          flatshading: true,
-          colorscale: [[0,"#440154"],[1,"#fde725"]],
-          showscale: false,
-          lighting: { ambient:0.6, diffuse:0.6, roughness:0.9, specular:0.5 },
-          lightposition: { x:100, y:200, z:0 }
-        }],
-        {
-          margin:{ l:0, r:0, b:0, t:0 },
-          paper_bgcolor: "black",
-          scene: {
-            aspectmode: "data",
-            camera:{ eye:{ x:1.5, y:1.5, z:1.5 } },
-            xaxis:{ visible:false },
-            yaxis:{ visible:false },
-            zaxis:{ visible:false }
-          },
-          template:"plotly_dark"
-        }
-      );
-
       function copyCode(btn){
-        const code = btn.parentNode.querySelector('pre code').innerText;
+        const code = btn.parentNode.querySelector('pre code').innerText.trim();
         navigator.clipboard.writeText(code);
         btn.textContent = '✅';
-        setTimeout(() => btn.textContent = '📋', 1500);
+        setTimeout(()=>btn.textContent='📋',1500);
       }
+
+      // JS Plotly cubo triangulado
+      (function(){
+        const verts = [
+          [-1,-1,-1],[-1,-1,1],[-1,1,-1],[-1,1,1],
+          [1,-1,-1],[1,-1,1],[1,1,-1],[1,1,1]
+        ].map(v=>{
+          const r = Math.hypot(...v);
+          return v.map(c=>c/r);
+        });
+
+        const faces = [
+          [0,1,3,2],[4,6,7,5],[0,2,6,4],
+          [1,5,7,3],[0,4,5,1],[2,3,7,6]
+        ];
+
+        let I=[],J=[],K=[],fc=[];
+        faces.forEach(f=>{
+          const [a,b,c,d] = f;
+          I.push(a,a); J.push(b,c); K.push(c,d);
+          for(let t=0;t<2;t++){
+            const r=50+Math.random()*205|0;
+            const g=50+Math.random()*205|0;
+            const b=50+Math.random()*205|0;
+            fc.push(`rgb(${r},${g},${b})`);
+          }
+        });
+
+        const X=verts.map(v=>v[0]),
+              Y=verts.map(v=>v[1]),
+              Z=verts.map(v=>v[2]);
+
+        Plotly.newPlot('cubo-plot',[{
+          type:'mesh3d', x:X, y:Y, z:Z,
+          i:I, j:J, k:K,
+          facecolor:fc,
+          opacity:0.6,
+          flatshading:true,
+          showscale:false
+        }],{
+          margin:{l:0,r:0,b:0,t:0},
+          scene:{ xaxis:{visible:false}, yaxis:{visible:false}, zaxis:{visible:false} },
+          paper_bgcolor:'black',
+          template:'plotly_dark'
+        });
+      })();
     </script>
   </section>
 
@@ -228,34 +375,16 @@ fig.show()
     <h2>Notebook Colab</h2>
     <a class="notebook-link"
        href="https://drive.google.com/file/d/1mYi6jyOjcSy_OVmpZ2ueKDXdDiVR8XKe/view?usp=sharing"
-       target="_blank" rel="noopener noreferrer">
-      Notebook en Colab - 1 
-    </a>
-  
-  
-    
+       target="_blank" rel="noopener noreferrer">Notebook en Colab - 1</a>
     <a class="notebook-link"
        href="https://drive.google.com/file/d/11WtHP9NLe1kZGoI4FkSQP4D_rCLWevzq/view?usp=sharing"
-       target="_blank" rel="noopener noreferrer">
-      Notebook en Colab - 2
-    </a>
-  
-
-  
+       target="_blank" rel="noopener noreferrer">Notebook en Colab - 2</a>
     <a class="notebook-link"
        href="https://drive.google.com/file/d/1vdO9GJRwkzBf3Bf5g2kcgeMRbdNbnbiC/view?usp=sharing"
-       target="_blank" rel="noopener noreferrer">
-      Notebook en Colab - 3
-    </a>
-  
-
-  
-    
+       target="_blank" rel="noopener noreferrer">Notebook en Colab - 3</a>
     <a class="notebook-link"
        href="https://drive.google.com/file/d/1kJyQk9EJExMTBuoml1u8ppxHoELPxKyz/view?usp=sharing"
-       target="_blank" rel="noopener noreferrer">
-      Notebook en Colab - 4
-    </a>
-</section>
+       target="_blank" rel="noopener noreferrer">Notebook en Colab - 4</a>
+  </section>
 </body>
 </html>
