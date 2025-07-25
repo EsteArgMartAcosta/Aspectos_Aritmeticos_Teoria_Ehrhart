@@ -126,7 +126,7 @@
         Una triangulación unimodular de un politopo reticular es una partición en símplices cuyos vértices tienen coordenadas enteras y cuya matriz de diferencias tiene determinante ±1. Este tipo de triangulaciones garantizan que los símplices no contengan puntos reticulares internos, lo cual es crucial para aplicaciones en geometría discreta y optimización entera. En esta sección se exploran metodologías para construir tales triangulaciones, ilustrando cada etapa mediante animaciones que destacan las propiedades clave:      </p>
       <ul style="margin-left:1.5rem; list-style-type:disc;">
         <li><strong>Construcción mediante descomposición barycentrica :</strong> Se parte de un politopo con vértices en el retículo entero d-dimensional y se subdividen sus caras de manera iterativa, garantizando que cada nuevo símplice forme una base que genere el retículo completo sin huecos. El proceso continúa hasta que todos los símplices resultantes cumplan la condición de determinante igual a uno o menos uno. </li>
-        <li><strong>Triangulación e<!DOCTYPE html>
+        <li><strong>Triangulación estrella:</strong> generación de símplices alrededor de un vértice central.</li>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -227,34 +227,6 @@
     .notebook-link:hover { background: #367acc; }
     nav { margin-bottom: 2rem; }
   </style>
-
-  <!-- Carga Plotly una sola vez -->
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-</head>
-<body>
-  <nav>
-    <a href="index.html">← Volver a la página principal</a>
-  </nav>
-
-  <!-- GIFs en las esquinas -->
-  <img id="gif-top-left" src="https://i.pinimg.com/originals/00/49/8a/00498ae5921a180b8854196c923b45e8.gif" alt="GIF esquina superior izquierda" />
-  <img id="gif-top-right" src="https://i.pinimg.com/originals/68/34/71/683471ad4a7e0dd3285c1cdba32e013c.gif" alt="GIF esquina superior derecha" />
-  <img id="gif-bottom-left" src="https://i.pinimg.com/originals/2b/7e/6e/2b7e6ec08370278d3682126cd2aa09bb.gif" alt="GIF esquina inferior izquierda" />
-  <img id="gif-bottom-right" src="https://i.pinimg.com/originals/fc/71/87/fc7187c57284d9719cdfb2b15f8bf242.gif" alt="GIF esquina inferior derecha" />
-
-  <!-- Sección de introducción -->
-  <section id="construccion-graficos" style="margin: 2rem 0;">
-    <h2 style="font-size:1.8rem; color:#fff;">Triangulaciones</h2>
-    <div style="text-align: justify; color: #ddd; line-height: 1.6;">
-      <p>
-        Una triangulación unimodular de un politopo reticular es una partición en símplices cuyos vértices tienen coordenadas enteras y cuya matriz de diferencias tiene determinante ±1. Este tipo de triangulaciones garantizan que los símplices no contengan puntos reticulares internos, lo cual es crucial para aplicaciones en geometría discreta y optimización entera. En esta sección se exploran metodologías para construir tales triangulaciones, ilustrando cada etapa mediante animaciones que destacan las propiedades clave:
-      </p>
-      <ul style="margin-left:1.5rem; list-style-type:disc;">
-        <li><strong>Construcción mediante descomposición barycéntrica:</strong> subdivisión iterativa de caras asegurando determinante ±1.</li>
-        <li><strong>Triangulación estrella:</strong> generación de símplices alrededor de un vértice central.</li>
-      </ul>
-    </div>
-  </section>
 
   <!-- Código Python de ejemplo (Colab) -->
   <section>
