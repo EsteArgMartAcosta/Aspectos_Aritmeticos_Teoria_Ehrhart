@@ -118,22 +118,55 @@
   <img id="gif-bottom-left" src="https://i.pinimg.com/originals/ee/d2/a2/eed2a26fb81e35d92ef5b0a7f12f8524.gif" alt="GIF esquina inferior izquierda" />
   <img id="gif-bottom-right" src="https://i.gifer.com/origin/91/91b59876f317efe84093f6d59ab43b7c_w200.gif" alt="GIF esquina inferior derecha" />
 
-  <!-- Sección Construcción de Gráficos -->
-  <section id="construccion-graficos" style="margin: 2rem 0;">
-    <h2 style="font-size:1.8rem; color:#fff;">Teoría de Ehrhart con SageMath</h2>
+   <!-- Introducción a Ehrhart en politopos enteros -->
+  <section id="introduccion-ehrhart" style="margin: 2rem 0;">
+    <h2 style="font-size:1.8rem; color:#fff;">Teoría de Ehrhart en politopos enteros</h2>
     <div style="text-align: justify; color: #ddd; line-height: 1.6;">
+
       <p>
-       Sea <em>P</em> un politopo convexo cuyos vértices pertenecen a la red 
-      <math>\mathbb{Z}^n</math>. Para cada entero no negativo <math>k</math> 
-      se considera la dilatación 
-      <math display="inline">kP = \{\,k\cdot x : x\in P\}</math> 
-      y se cuenta el número de puntos enteros contenidos en ella.      </p>
-      <ul style="margin-left:1.5rem; list-style-type:disc;">
-        <li><strong>Envolventes convexas</strong> sobre conjuntos de puntos en el plano, mostrando el polígono mínimo que engloba todos los vértices y facilitando el análisis de sus propiedades métricas.</li>
-        <li><strong>Hiperplanos</strong> utilizados para definir las caras de los p-politopos, estableciendo de manera precisa los límites de cada región en el espacio.</li>
-        <li><strong>Triángulos</strong> diseñados específicamente para demostrar el Teorema de Pick, ilustrando la relación entre el área, los puntos interiores y los puntos en la frontera.</li>
-        <li><strong>Politopos</strong> representados en 2D, con vistas en alzado y perspectiva, que permiten ver su estructura (vértices, aristas y caras) y cómo cambian al rotarlos.</li>
-      </ul>
+        Sea <em>P</em> un politopo convexo cuyos vértices pertenecen a la red 
+        $\mathbb{Z}^n$. Para cada entero no negativo $k$ se considera la dilatación 
+        $\displaystyle kP = \{\,k\cdot x : x\in P\}$ y se cuenta el número de puntos enteros contenidos en ella.
+      </p>
+
+      <p style="text-align: center; font-style: italic;">
+        $$L_{P}(k) = \bigl|\,kP\cap\mathbb{Z}^{n}\bigr|.$$
+      </p>
+
+      <p>
+        Ha quedado demostrado que $L_{P}(k)$ coincide con un polinomio de grado $n$ en la variable $k$, conocido como <strong>polinomio de Ehrhart</strong>. Su coeficiente principal es igual al volumen normalizado de <em>P</em>, y el término independiente refleja el número de puntos enteros situados en la frontera de <em>P</em>.
+      </p>
+
+      <p>
+        Se define asimismo la <strong>serie de Ehrhart</strong> asociada a <em>P</em> como la función generatriz
+      </p>
+
+      <p style="text-align: center; font-style: italic;">
+        $$
+          E_{P}(t) = \sum_{k=0}^{\infty} L_{P}(k)\,t^{k}
+          = \frac{h^{*}_{0}+h^{*}_{1}\,t+\cdots+h^{*}_{d}\,t^{d}}{(1 - t)^{n+1}},
+        $$
+      </p>
+
+      <p>
+        donde los coeficientes $h^{*}_{i}$ conforman el vector $h^{*}$ de <em>P</em>, que codifica información combinatoria relativa a subdivisiones, triangulaciones y simetrías del politopo.
+      </p>
+
+      <p>
+        Se ha verificado además que el polinomio de Ehrhart satisface la <strong>fórmula de reciprocidad</strong>:
+      </p>
+
+      <p style="text-align: center; font-style: italic;">
+        $$
+          L_{P}(-k) = (-1)^{n}\,L_{\mathrm{int}(P)}(k),
+          \quad k\in\mathbb{Z}_{>0},
+        $$
+      </p>
+
+      <p>
+        donde $\mathrm{int}(P)$ denota el interior relativo de <em>P</em>, estableciendo la correspondencia entre el recuento exterior e interior de puntos enteros.
+      </p>
+
     </div>
   </section>
 
