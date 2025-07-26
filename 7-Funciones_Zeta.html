@@ -6,9 +6,6 @@
   <title>Monografía</title>
   <link rel="icon" href="https://esteargen.github.io/Aspectos_Aritmeticos_Teoria_Ehrhart/Icono/logo1.ico" type="image/x-icon" />
 
-
-
-
   <!-- Prism.js: tema Tomorrow Night y soporte de Python -->
   <link
     rel="stylesheet"
@@ -55,6 +52,7 @@
       border-bottom: 1px solid #444;
       padding-bottom: 0.5rem;
       margin-top: 2rem;
+      color: #fff;
     }
     pre {
       background: #222;
@@ -69,7 +67,7 @@
       position: relative;
       margin-top: 1rem;
       border-left: 4px solid #4ea8ff;
-      padding: 1rem 1rem 1rem 1rem;
+      padding: 1rem;
       background: #222;
       border-radius: 6px;
     }
@@ -102,6 +100,14 @@
     .notebook-link:hover { background: #367acc; }
     nav { margin-bottom: 2rem; }
 
+    /* Estilos para el iframe del PDF */
+    #pdf-viewer {
+      width: 100%;
+      height: 800px;
+      border: 1px solid #444;
+      margin-top: 1rem;
+      background: #000;
+    }
   </style>
 
   <!-- Carga Plotly una sola vez -->
@@ -119,8 +125,8 @@
   <img id="gif-bottom-right" src="https://i.gifer.com/origin/7d/7d93e9e6264699fe2b7b23eae723c724_w200.gif" alt="GIF esquina inferior derecha" />
 
   <!-- Sección Construcción de Gráficos -->
-  <section id="construccion-graficos" style="margin: 2rem 0;">
-    <h2 style="font-size:1.8rem; color:#fff;">Monografía</h2>
+  <section id="construccion-graficos">
+    <h2>Monografía</h2>
     <div style="text-align: justify; color: #ddd; line-height: 1.6;">
       <p>
         En esta sección se reúnen varias de las figuras estáticas y dinámicas que acompañan al cuerpo de la tesis, elaboradas para documentar y clarificar los procesos geométricos esenciales que respaldan los resultados teóricos:
@@ -129,13 +135,23 @@
         <li><strong>Envolventes convexas</strong> sobre conjuntos de puntos en el plano, mostrando el polígono mínimo que engloba todos los vértices y facilitando el análisis de sus propiedades métricas.</li>
         <li><strong>Hiperplanos</strong> utilizados para definir las caras de los p-politopos, estableciendo de manera precisa los límites de cada región en el espacio.</li>
         <li><strong>Triángulos</strong> diseñados específicamente para demostrar el Teorema de Pick, ilustrando la relación entre el área, los puntos interiores y los puntos en la frontera.</li>
-        <li><strong>Politopos</strong> representados en 2D, con vistas en alzado y perspectiva, que permiten ver su estructura (vértices, aristas y caras) y cómo cambian al rotarlos.</li>
+        <li><strong>Polítopos</strong> representados en 2D, con vistas en alzado y perspectiva, que permiten ver su estructura (vértices, aristas y caras) y cómo cambian al rotarlos.</li>
       </ul>
     </div>
   </section>
 
-  
+  <!-- Sección Visor de PDF -->
+  <section id="visor-pdf">
+    <h2>Lectura de la Monografía</h2>
+    <p style="color:#ddd;">
+      A continuación se muestra el PDF completo desde la release de GitHub, con el visor de PDF.js integrado.
+    </p>
+    <iframe
+      id="pdf-viewer"
+      src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https://github.com/EsteArgen/Aspectos_Aritmeticos_Teoria_Ehrhart/releases/download/v1.0/Aspectos_Aritmeticos_de_la_Teoria_de_Ehrhart.pdf"
+      allowfullscreen
+    ></iframe>
+  </section>
 
- 
 </body>
 </html>
