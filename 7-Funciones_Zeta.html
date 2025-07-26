@@ -4,17 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Monografía</title>
-  <link rel="icon"
-        href="https://esteargen.github.io/Aspectos_Aritmeticos_Teoria_Ehrhart/Icono/logo1.ico"
-        type="image/x-icon" />
+  <link rel="icon" href="https://esteargen.github.io/Aspectos_Aritmeticos_Teoria_Ehrhart/Icono/logo1.ico" type="image/x-icon" />
 
-  <!-- Prism.js (opcional) -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
-  <script defer
-          src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script defer
-          src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <!-- Prism.js: tema Tomorrow Night y soporte de Python -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+  />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
+    defer
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"
+    defer
+  ></script>
 
   <style>
     body {
@@ -25,15 +29,10 @@
       max-width: 900px;
       padding: 1rem 2rem;
       line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
     }
-    nav a { color: #4ea8ff; text-decoration: none; }
-    h2 {
-      color: #fff;
-      border-bottom: 1px solid #444;
-      padding-bottom: .5rem;
-      margin-top: 2rem;
-    }
-    /* GIFs de fondo */
+    /* GIFs en las esquinas */
     #gif-top-left, #gif-top-right, #gif-bottom-left, #gif-bottom-right {
       position: fixed;
       width: 250px;
@@ -41,47 +40,127 @@
       z-index: -1;
       pointer-events: none;
     }
-    #gif-top-left { top:0; left:0; }
-    #gif-top-right { top:0; right:0; }
-    #gif-bottom-left { bottom:0; left:0; }
-    #gif-bottom-right { bottom:0; right:0; }
+    #gif-top-left { top: 0; left: 0; }
+    #gif-top-right { top: 0; right: 0; }
+    #gif-bottom-left { bottom: 0; left: 0; }
+    #gif-bottom-right { bottom: 0; right: 0; }
 
-    /* Estilo del visor PDF */
-    .pdf-object {
+    a { color: #4ea8ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2 {
+      font-weight: 400;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+      color: #fff;
+    }
+    pre {
+      background: #222;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 6px;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .code-section {
+      position: relative;
+      margin-top: 1rem;
+      border-left: 4px solid #4ea8ff;
+      padding: 1rem;
+      background: #222;
+      border-radius: 6px;
+    }
+    .code-section .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #4ea8ff;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .code-section .copy-btn:hover {
+      opacity: 1;
+    }
+    .notebook-link {
+      margin-top: 1rem;
+      display: inline-block;
+      background: #4ea8ff;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    .notebook-link:hover { background: #367acc; }
+    nav { margin-bottom: 2rem; }
+
+    /* Para el embed del PDF */
+    .pdf-embed {
       width: 100%;
       height: 800px;
       border: 1px solid #444;
       margin-top: 1rem;
       background: #000;
     }
+    .fallback {
+      margin-top: .5rem;
+      color: #ddd;
+    }
+    .fallback a { color: #4ea8ff; }
   </style>
+
+  <!-- Carga Plotly (si luego lo necesitas) -->
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 </head>
 <body>
-
   <nav>
     <a href="index.html">← Volver a la página principal</a>
   </nav>
 
-  <!-- GIFs en las esquinas -->
-  <img id="gif-top-left" src="https://i.gifer.com/BF2l.gif" alt="" />
-  <img id="gif-top-right" src="https://i.gifer.com/origin/84/8457555b31abbe10ed105d9889a623fa_w200.gif" alt="" />
-  <img id="gif-bottom-left" src="https://i.gifer.com/origin/f5/f5008f559093e0c2dee511119a3ee138_w200.gif" alt="" />
-  <img id="gif-bottom-right" src="https://i.gifer.com/origin/7d/7d93e9e6264699fe2b7b23eae723c724_w200.gif" alt="" />
+  <!-- GIFs de fondo -->
+  <img id="gif-top-left" src="https://i.gifer.com/BF2l.gif" alt="GIF esquina superior izquierda" />
+  <img id="gif-top-right" src="https://i.gifer.com/origin/84/8457555b31abbe10ed105d9889a623fa_w200.gif" alt="GIF esquina superior derecha" />
+  <img id="gif-bottom-left" src="https://i.gifer.com/origin/f5/f5008f559093e0c2dee511119a3ee138_w200.gif" alt="GIF esquina inferior izquierda" />
+  <img id="gif-bottom-right" src="https://i.gifer.com/origin/7d/7d93e9e6264699fe2b7b23eae723c724_w200.gif" alt="GIF esquina inferior derecha" />
 
-  <section>
+  <!-- Sección Monografía -->
+  <section id="construccion-graficos">
     <h2>Monografía</h2>
-    <p style="color:#ddd;">
-      A continuación el PDF completo de la monografía, alojado en la release de GitHub y cargado mediante un `<object>`.
-    </p>
-    <object
-      class="pdf-object"
-      data="https://cdn.jsdelivr.net/gh/EsteArgen/Aspectos_Aritmeticos_Teoria_Ehrhart@v1.0/Aspectos_Aritmeticos_de_la_Teoria_Ehrhart.pdf"
-      type="application/pdf">
-      <p style="color:#ddd;">
-        No se pudo cargar el PDF. Puedes <a href="https://cdn.jsdelivr.net/gh/EsteArgen/Aspectos_Aritmeticos_Teoria_Ehrhart@v1.0/Aspectos_Aritmeticos_de_la_Teoria_Ehrhart.pdf"
-        style="color:#4ea8ff;">descargarlo aquí</a>.
+    <div style="text-align: justify; color: #ddd; line-height: 1.6;">
+      <p>
+        En esta sección se reúnen varias de las figuras estáticas y dinámicas que acompañan al cuerpo de la tesis, elaboradas para documentar y clarificar los procesos geométricos esenciales que respaldan los resultados teóricos:
       </p>
-    </object>
+      <ul style="margin-left:1.5rem; list-style-type:disc;">
+        <li><strong>Envolventes convexas</strong> sobre conjuntos de puntos en el plano, mostrando el polígono mínimo.</li>
+        <li><strong>Hiperplanos</strong> para definir las caras de p‑politopos.</li>
+        <li><strong>Triángulos</strong> diseñados para ilustrar el Teorema de Pick.</li>
+        <li><strong>Polítopos</strong> representados en 2D con rotación interactiva.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sección Lectura del PDF -->
+  <section>
+    <h2>Lectura de la Monografía</h2>
+    <p style="color:#ddd;">
+      A continuación, puede leerse el PDF completo embebido desde tu release de GitHub:
+    </p>
+
+    <!-- Embed directo del PDF desde jsDelivr -->
+    <embed
+      class="pdf-embed"
+      src="https://cdn.jsdelivr.net/gh/EsteArgen/Aspectos_Aritmeticos_Teoria_Ehrhart@v1.0/Aspectos_Aritmeticos_de_la_Teoria_de_Ehrhart.pdf"
+      type="application/pdf">
+
+    <div class="fallback">
+      Si no se visualiza, <a href="https://cdn.jsdelivr.net/gh/EsteArgen/Aspectos_Aritmeticos_Teoria_Ehrhart@v1.0/Aspectos_Aritmeticos_de_la_Teoria_de_Ehrhart.pdf" target="_blank">descárgalo aquí</a>.
+    </div>
   </section>
 
 </body>
