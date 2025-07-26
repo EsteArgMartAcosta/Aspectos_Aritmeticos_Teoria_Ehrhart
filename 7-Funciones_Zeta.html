@@ -8,19 +8,13 @@
         href="https://esteargen.github.io/Aspectos_Aritmeticos_Teoria_Ehrhart/Icono/logo1.ico"
         type="image/x-icon" />
 
-  <!-- Prism.js: tema Tomorrow Night y soporte de Python -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
-  />
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
-    defer
-  ></script>
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"
-    defer
-  ></script>
+  <!-- Prism.js (opcional) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script defer
+          src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script defer
+          src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
 
   <style>
     body {
@@ -51,8 +45,9 @@
     #gif-top-right { top:0; right:0; }
     #gif-bottom-left { bottom:0; left:0; }
     #gif-bottom-right { bottom:0; right:0; }
-    /* Iframe del visor PDF.js */
-    #pdf-viewer {
+
+    /* Estilo del visor PDF */
+    .pdf-object {
       width: 100%;
       height: 800px;
       border: 1px solid #444;
@@ -60,9 +55,6 @@
       background: #000;
     }
   </style>
-
-  <!-- Plotly (se mantiene para otras secciones) -->
-  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 </head>
 <body>
 
@@ -78,31 +70,20 @@
 
   <section>
     <h2>Monografía</h2>
-    <div style="text-align:justify; color:#ddd;">
-      <p>
-        En esta sección se reúnen varias de las figuras estáticas y dinámicas que acompañan al cuerpo de la tesis, elaboradas para documentar y clarificar los procesos geométricos esenciales que respaldan los resultados teóricos:
-      </p>
-      <ul style="margin-left:1.5rem; list-style-type:disc;">
-        <li><strong>Envolventes convexas</strong> sobre conjuntos de puntos en el plano.</li>
-        <li><strong>Hiperplanos</strong> para definir caras de p-politopos.</li>
-        <li><strong>Triángulos</strong> diseñados para demostrar el Teorema de Pick.</li>
-        <li><strong>Polítopos</strong> representados en 2D con rotación interactiva.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <h2>Lectura de la Monografía</h2>
     <p style="color:#ddd;">
-      A continuación se muestra el PDF completo directamente desde la release de GitHub, 
-      utilizando PDF.js servido por jsDelivr para evitar problemas de CORS o redirecciones.
+      A continuación el PDF completo de la monografía, alojado en la release de GitHub y cargado mediante un `<object>`.
     </p>
-    <iframe
-      id="pdf-viewer"
-      src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FEsteArgen%2FAspectos_Aritmeticos_Teoria_Ehrhart%40v1.0%2FAspectos_Aritmeticos_de_la_Teoria_de_Ehrhart.pdf"
-      allowfullscreen>
-    </iframe>
+    <object
+      class="pdf-object"
+      data="https://cdn.jsdelivr.net/gh/EsteArgen/Aspectos_Aritmeticos_Teoria_Ehrhart@v1.0/Aspectos_Aritmeticos_de_la_Teoria_Ehrhart.pdf"
+      type="application/pdf">
+      <p style="color:#ddd;">
+        No se pudo cargar el PDF. Puedes <a href="https://cdn.jsdelivr.net/gh/EsteArgen/Aspectos_Aritmeticos_Teoria_Ehrhart@v1.0/Aspectos_Aritmeticos_de_la_Teoria_Ehrhart.pdf"
+        style="color:#4ea8ff;">descargarlo aquí</a>.
+      </p>
+    </object>
   </section>
 
 </body>
 </html>
+
