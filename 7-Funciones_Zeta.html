@@ -102,17 +102,15 @@
     .notebook-link:hover { background: #367acc; }
     nav { margin-bottom: 2rem; }
 
-    /* Estilos para el iframe de Google Docs */
-    .pdf-viewer {
+    /* Estilos para el visor PDF.js */
+    #pdf-viewer {
       width: 100%;
       height: 800px;
       border: none;
       margin-top: 1rem;
-      background: #000;
     }
     .fallback {
-      margin-top: .5rem;
-      color: #ddd;
+      margin-top: .5rem; color: #ddd;
     }
     .fallback a { color: #4ea8ff; }
   </style>
@@ -147,16 +145,16 @@
     </div>
   </section>
 
-  <!-- Sección Lectura del PDF via Google Docs Viewer -->
+  <!-- Sección Lectura del PDF con PDF.js -->
   <section>
     <h2>Lectura de la Monografía</h2>
     <p style="color:#ddd;">
-      A continuación, puede leerse el PDF completo embebido mediante Google Docs Viewer:
+      Aquí se incrusta el visor PDF.js cargando tu PDF desde jsDelivr:
     </p>
 
     <iframe
-      class="pdf-viewer"
-      src="https://docs.google.com/gview?url=https://github.com/EsteArgen/Aspectos_Aritmeticos_Teoria_Ehrhart/releases/download/v1.0/Aspectos_Aritmeticos_de_la_Teoria_de_Ehrhart.pdf&embedded=true">
+      id="pdf-viewer"
+      src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https://cdn.jsdelivr.net/gh/EsteArgen/Aspectos_Aritmeticos_Teoria_Ehrhart@v1.0/Aspectos_Aritmeticos_de_la_Teoria_de_Ehrhart.pdf">
     </iframe>
 
     <div class="fallback">
